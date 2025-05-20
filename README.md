@@ -68,7 +68,7 @@ Dari hasil analisis awal deskripsi data, terlihat bahwa data siap untuk tahap se
 **1. Distribusi Data Target (HeartDisease)**
 
 <br>
-<image src='image/distribusi_target.png' width= 500/>
+<image src='images/distribusi_datatarget.png' width= 500/>
 <br>
 
 Distribusi data pada label `HeartDisease` adalah cukup imbalance (55.3% vs 44.7%). Hal ini harus diperhatikan saat pelatihan model, agar tidak menghasilkan prediksi yang berat sebelah. Metrik evaluasi yang tepat dan teknik penyeimbangan data seperti oversampling pada data train (saat setelah membagi data) bisa membantu mengatasi masalah ini.
