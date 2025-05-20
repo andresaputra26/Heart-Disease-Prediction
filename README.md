@@ -98,7 +98,7 @@ Boxplot menunjukkan bahwa sebagian besar fitur memiliki outlier, terutama pada R
 Berdasarkan korelasi antar fitur numerik, tidak ditemukan fitur yang redundant dalam dataset ini. Nilai korelasi antar fitur mayoritas rendah, di bawah 0.3, sehingga setiap fitur memberikan informasi yang unik dan layak dipertahankan untuk analisis atau pemodelan.
 
 #### Analisis Multivariat
-
+## Kategorikal
 **1. Sex vs HeartDisease**
 <br>
 <image src='image/gender.png' width= 500/>
@@ -145,7 +145,8 @@ Indikasi: Exercise angina mungkin menjadi tanda yang cukup kuat adanya penyakit 
 
 Indikasi: ST slope Flat dan Down bisa menjadi indikator risiko penyakit jantung yang lebih tinggi dibandingkan slope Up.
 
-**6. Age vs HeartDisease**
+## Numerikal
+**1. Age vs HeartDisease**
 <br>
 <image src='image/waktu_belajar.png' width= 500/>
 <br> 
@@ -155,7 +156,31 @@ Indikasi: ST slope Flat dan Down bisa menjadi indikator risiko penyakit jantung 
   - No: 50.55
   - Yes: 54.90
 
-Pengaruh: Umur yang lebih tua meningkatkan kemungkinan terkena penyakit jantung, karena risiko penyakit kardiovaskular memang meningkat seiring bertambahnya usia.
+Pengaruh: Umur yang lebih tua meningkatkan kemungkinan terkena penyakit jantung, karena risiko penyakit jantung memang meningkat seiring bertambahnya usia.
+
+**7. RestingBP vs HeartDisease**
+<br>
+<image src='image/waktu_belajar.png' width= 500/>
+<br> 
+- Distribusi: Kedua kelompok (HeartDisease = No dan Yes) memiliki distribusi yang mirip, namun terdapat sedikit pergeseran ke kanan pada kelompok HeartDisease = Yes, yang menunjukkan tekanan darah lebih tinggi.
+- Rata-rata:
+  - All: 132.40
+  - No: 130.18
+  - Yes: 134.19
+
+Pengaruh: enderita penyakit jantung cenderung memiliki tekanan darah istirahat yang sedikit lebih tinggi. Meskipun perbedaannya tidak terlalu besar, tekanan darah yang meningkat dapat menjadi faktor risiko tambahan terhadap penyakit jantung, terutama jika dikombinasikan dengan faktor risiko lainnya.
+
+**8. Age vs HeartDisease**
+<br>
+<image src='image/waktu_belajar.png' width= 500/>
+<br> 
+- Distribusi: Terlihat pergeseran ke kanan pada grup penderita HeartDisease = Yes, artinya penderita cenderung lebih tua dibandingkan yang tidak.
+- Rata-rata:
+  - All: 53.51
+  - No: 50.55
+  - Yes: 54.90
+
+Pengaruh: Umur yang lebih tua meningkatkan kemungkinan terkena penyakit jantung, karena risiko penyakit jantung memang meningkat seiring bertambahnya usia.
 
 ## Data Preparation
 
