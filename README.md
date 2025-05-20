@@ -61,8 +61,9 @@ Dataset ini berisi informasi klinis dan demografis pasien yang digunakan untuk m
 
 Dari hasil analisis awal deskripsi data, terlihat bahwa data siap untuk tahap selanjutnya.
 
-### Exploratory Data Analysis
-#### Analisis Univariate
+## Exploratory Data Analysis
+
+#### Analisis Univariat
 
 **1. Distribusi Data Target (HeartDisease)**
 
@@ -80,24 +81,33 @@ Distribusi data pada label `HeartDisease` adalah cukup imbalance (55.3% vs 44.7%
 
 Distribusi data kategorikal menunjukkan ketimpangan pada beberapa fitur, seperti `ChestPainType` dan `ST_Slope`. Ketimpangan ini dapat memengaruhi kinerja model, sehingga perlu penanganan khusus. Salah satu cara efektif adalah menggunakan **One-Hot Encoding**, yang mengubah setiap kategori menjadi kolom biner tanpa memberi makna urutan. Pendekatan ini membantu model memahami setiap kategori secara adil dan mencegah bias terhadap kategori mayoritas.
 
-**2. Distribusi Data Numerik**
+**3. Distribusi Data Numerik**
 <br>
 <image src='image/distribusi_data_numerik.png' width= 500/>
 <image src='image/boxplot_data_numerik.png' width= 500/>
 <br> 
-Kolom `Work Pressure` dan `Job Satisfaction` juga menunjukkan dominasi pada satu nilai tertentu, sehingga tidak memberikan variasi yang signifikan untuk analisis. Oleh karena itu, kedua kolom tersebut akan dihapus dari dataset.
+Dari gambar histogram menggambarkan sebaran nilai dan frekuensi kemunculannya. Sebagian besar distribusi menunjukkan bentuk mendekati normal (seperti `Age` dan `MaxHR`), namun beberapa memiliki sebaran yang condong atau outlier ekstrem, seperti `Cholesterol` dan `Oldpeak`
 
-Sementara itu, kolom `Age` dan `CGPA` teridentifikasi **memiliki nilai outlier** yang dapat memengaruhi hasil analisis. Outlier pada kedua kolom tersebut akan dihapus pada tahap praproses selanjutnya.
+Boxplot menunjukkan bahwa sebagian besar fitur memiliki outlier, terutama pada RestingBP, Cholesterol, dan Oldpeak, sedangkan Age dan MaxHR memiliki sebaran yang relatif normal. Fitur FastingBS didominasi oleh nilai 0 dan minim variasi, sehingga dianggap tidak informatif dan akhirnya dihapus karena berpotensi tidak berkontribusi signifikan terhadap performa model.
+
+**4. Matriks korelasi kolom numerik**
+<br>
+<image src='image/distribusi_data_numerik.png' width= 500/>
+<image src='image/boxplot_data_numerik.png' width= 500/>
+<br> 
+Berdasarkan korelasi antar fitur numerik, tidak ditemukan fitur yang redundant dalam dataset ini. Nilai korelasi antar fitur mayoritas rendah, di bawah 0.3, sehingga setiap fitur memberikan informasi yang unik dan layak dipertahankan untuk analisis atau pemodelan.
 
 #### Analisis Multivariat
 
-**1. Distribusi Jenis Kelamin dan Pengaruhnya terhadap Status Depresi**
+**1. Sex vs HeartDisease**
 <br>
 <image src='image/gender.png' width= 500/>
 <br>
-Baik pria maupun wanita memiliki proporsi yang hampir sama dalam hal mengalami depresi, dengan sekitar 58% dari masing-masing gender tercatat mengalami depresi. Persentase pria yang mengalami depresi sedikit lebih tinggi (58,62%) dibanding wanita (58,47%). Ini mengindikasikan bahwa dalam data ini, status depresi tidak terlalu dipengaruhi oleh perbedaan gender.
+- Pria (M) cenderung memiliki jumlah kasus penyakit jantung (HeartDisease = Yes) sebesar 90.2% yang jauh lebih banyak dibandingkan wanita (F) yang sebesar 9.8%.
+- Wanita memiliki jumlah kasus negatif sebesar 34.9% (tidak ada penyakit jantung) yang lebih tinggi dibandingkan kasus positif yang sebesar 9.8%.
+Kesimpulan: Jenis kelamin pria memiliki risiko lebih tinggi terkena penyakit jantung.
 
-**2. Pengaruh Pemikiran Bunuh Diri Terhadap Status Depresi**
+**2. ChestPainType vs HeartDisease**
 <br>
 <image src='image/pemikiran_bunuh_diri.png' width= 500/>
 <br>
