@@ -147,7 +147,7 @@ Indikasi: ST slope Flat dan Down bisa menjadi indikator risiko penyakit jantung 
 ## Numerikal
 **1. Age vs HeartDisease**
 <br>
-<image src='images/waktu_belajar.png' width= 500/>
+<image src='images/Distribution of Age by HeartDisease.png' width= 500/>
 <br> 
 - Distribusi: Terlihat pergeseran ke kanan pada grup penderita HeartDisease = Yes, artinya penderita cenderung lebih tua dibandingkan yang tidak.
 - Rata-rata:
@@ -159,7 +159,7 @@ Pengaruh: Umur yang lebih tua meningkatkan kemungkinan terkena penyakit jantung,
 
 **2. RestingBP vs HeartDisease**
 <br>
-<image src='image/waktu_belajar.png' width= 500/>
+<image src='images/Distribution of RestingBP by HeartDisease.png' width= 500/>
 <br> 
 - Distribusi: Kedua kelompok (HeartDisease = No dan Yes) memiliki distribusi yang mirip, namun terdapat sedikit pergeseran ke kanan pada kelompok HeartDisease = Yes, yang menunjukkan tekanan darah lebih tinggi.
 - Rata-rata:
@@ -171,7 +171,7 @@ Pengaruh: enderita penyakit jantung cenderung memiliki tekanan darah istirahat y
 
 **3. Cholesterol vs HeartDisease**
 <br>
-<image src='image/waktu_belajar.png' width= 500/>
+<image src='images/Distribution of Cholesterol by HeartDisease.png' width= 500/>
 <br> 
 - Distribusi: Terlihat bahwa kelompok HeartDisease = No memiliki distribusi kolesterol yang lebih tinggi dibandingkan dengan kelompok HeartDisease = Yes, yang cukup mengejutkan karena bertentangan dengan asumsi umum.
 - Rata-rata:
@@ -183,7 +183,7 @@ Pengaruh: Secara mengejutkan, kolesterol rata-rata pada penderita penyakit jantu
 
 **4. MaxHR vs HeartDisease**
 <br>
-<image src='image/waktu_belajar.png' width= 500/>
+<image src='images/Distribution of MaxHR by HeartDisease.png' width= 500/>
 <br> 
 - Distribusi: Distribusi menunjukkan bahwa kelompok HeartDisease = No memiliki detak jantung maksimum yang lebih tinggi, sedangkan kelompok HeartDisease = Yes cenderung memiliki MaxHR yang lebih rendah.
 - Rata-rata:
@@ -193,9 +193,9 @@ Pengaruh: Secara mengejutkan, kolesterol rata-rata pada penderita penyakit jantu
 
 Pengaruh: Penderita penyakit jantung cenderung tidak mampu mencapai detak jantung maksimum yang tinggi saat beraktivitas fisik, yang bisa menjadi indikasi keterbatasan fungsi jantung. MaxHR yang lebih rendah merupakan sinyal penting adanya potensi gangguan jantung, sehingga fitur ini cukup signifikan dalam membedakan antara penderita dan non-penderita.
 
-**5. MaxHR vs HeartDisease**
+**5. Oldpeak vs HeartDisease**
 <br>
-<image src='image/waktu_belajar.png' width= 500/>
+<image src='images/Distribution of Oldpeak by HeartDisease.png' width= 500/>
 <br> 
 - Distribusi: Sangat berbeda antar grup. Grup HeartDisease = Yes punya distribusi lebih menyebar ke kanan (nilai oldpeak lebih tinggi).
 - Rata-rata:
