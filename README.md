@@ -105,31 +105,57 @@ Berdasarkan korelasi antar fitur numerik, tidak ditemukan fitur yang redundant d
 <br>
 - Pria (M) cenderung memiliki jumlah kasus penyakit jantung (HeartDisease = Yes) sebesar 90.2% yang jauh lebih banyak dibandingkan wanita (F) yang sebesar 9.8%.
 - Wanita memiliki jumlah kasus negatif sebesar 34.9% (tidak ada penyakit jantung) yang lebih tinggi dibandingkan kasus positif yang sebesar 9.8%.
-Kesimpulan: Jenis kelamin pria memiliki risiko lebih tinggi terkena penyakit jantung.
+
+Indikasi: Jenis kelamin pria memiliki risiko lebih tinggi terkena penyakit jantung.
 
 **2. ChestPainType vs HeartDisease**
 <br>
 <image src='image/pemikiran_bunuh_diri.png' width= 500/>
 <br>
-Seperti yang dapat diduga, data menunjukkan bahwa responden yang memiliki pemikiran untuk melakukan bunuh diri memiliki kemungkinan jauh lebih besar untuk mengalami depresi.
+- Tipe nyeri dada ASY (Asymptomatic) memiliki jumlah kasus penyakit jantung yang sangat tinggi dibandingkan tipe lainnya.
+- Tipe ATA (Atypical angina), NAP (Non-anginal pain), dan TA (Typical angina) cenderung lebih banyak ditemukan pada pasien tanpa penyakit jantung.
 
-**3. Pengaruh Tekanan Akademik Terhadap Status Depresi**
+Indikasi: Nyeri dada tipe Asymptomatic berpotensi menjadi indikator kuat penyakit jantung.
+
+**3. RestingECG vs HeartDisease**
 <br>
 <image src='image/tekanan_akademik.png' width= 500/>
 <br>
-Tekanan akademik yang tinggi dapat menjadi salah satu faktor yang meningkatkan risiko seseorang mengalami depresi. Semakin besar beban dan stres yang dirasakan, semakin tinggi pula kemungkinan individu mengalami gangguan kesehatan mental seperti depresi.
+- Pada kategori Normal, distribusi pasien dengan dan tanpa penyakit jantung tampak seimbang.
+- Kategori ST dan LVH lebih banyak ditemukan pada pasien dengan penyakit jantung.
 
-**4. Umur Pelajar Dengan Kemungkinan Status Depresi**
+Indikasi: Abnormalitas pada Resting ECG (ST, LVH) bisa mengindikasikan adanya penyakit jantung.
+
+**4. ExerciseAngina vs HeartDisease**
 <br>
 <image src='image/umur.png' width= 500/>
 <br> 
-Grafik menunjukkan bahwa responden dengan status depresi cenderung berusia lebih muda, dengan rata-rata usia 24 tahun, dibandingkan yang tidak depresi dengan rata-rata 27 tahun. Hal ini mengindikasikan bahwa depresi lebih banyak dialami oleh kelompok usia muda.
+- Pasien dengan ExerciseAngina = Y (ya) cenderung lebih banyak yang positif penyakit jantung.
+- Sebaliknya, pasien tanpa exercise angina (N) mayoritas tidak memiliki penyakit jantung.
 
-**5. Jam Belajar/Kerja dan Status Depresi**
+Indikasi: Exercise angina mungkin menjadi tanda yang cukup kuat adanya penyakit jantung.
+
+**5. ST_Slope vs HeartDisease**
 <br>
 <image src='image/waktu_belajar.png' width= 500/>
 <br> 
-Responden dengan depresi memiliki rata-rata jam kerja/belajar lebih tinggi (7,81 jam) dibandingkan yang tidak depresi (6,24 jam). Ini mengindikasikan bahwa semakin banyak jam kerja/belajar, potensi mengalami depresi cenderung meningkat.
+- Kategori Flat pada ST slope tampak terkait dengan jumlah kasus penyakit jantung yang tinggi.
+- Kategori Up lebih sering ditemukan pada pasien tanpa penyakit jantung.
+- Kategori Down juga lebih banyak pada pasien dengan penyakit jantung, meskipun jumlahnya lebih kecil dari Flat.
+
+Indikasi: ST slope Flat dan Down bisa menjadi indikator risiko penyakit jantung yang lebih tinggi dibandingkan slope Up.
+
+**6. Age vs HeartDisease**
+<br>
+<image src='image/waktu_belajar.png' width= 500/>
+<br> 
+- Distribusi: Terlihat pergeseran ke kanan pada grup penderita HeartDisease = Yes, artinya penderita cenderung lebih tua dibandingkan yang tidak.
+- Rata-rata:
+  - All: 53.51
+  - No: 50.55
+  - Yes: 54.90
+
+Pengaruh: Umur yang lebih tua meningkatkan kemungkinan terkena penyakit jantung, karena risiko penyakit kardiovaskular memang meningkat seiring bertambahnya usia.
 
 ## Data Preparation
 
