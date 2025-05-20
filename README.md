@@ -61,24 +61,24 @@ Dataset ini berisi informasi klinis dan demografis pasien yang digunakan untuk m
 
 Dari hasil analisis awal deskripsi data, terlihat bahwa data siap untuk tahap selanjutnya.
 
-### Distribusi Data Target (HeartDisease)
+### Exploratory Data Analysis
+#### Analisis Univariate
+
+**1. Distribusi Data Target (HeartDisease)**
 
 <br>
 <image src='image/distribusi_target.png' width= 500/>
 <br>
 
-Distribusi pada data target (Depression) sedikit **imbalance** (tidak seimbang), yang mungkin dapat menyebabkan model cenderung memprediksi kelas mayoritas. Oleh karena itu, untuk mengantisipasi permasalahan ini, akan dilakukan percobaan menggunakan teknik **oversampling** pada **data train** (*setelah proses pembagian data menjadi data latih dan data uji*).
+Distribusi data pada label `HeartDisease` adalah cukup imbalance (55.3% vs 44.7%). Hal ini harus diperhatikan saat pelatihan model, agar tidak menghasilkan prediksi yang berat sebelah. Metrik evaluasi yang tepat dan teknik penyeimbangan data seperti oversampling pada data train (saat setelah membagi data) bisa membantu mengatasi masalah ini.
 
-#### Analisis Univariat
 
-**1. Distribusi Data Kategorikal**
+**2. Distribusi Data Kategorikal**
 <br>
 <image src='image/distribusi_data_kategorik.png' width= 500/>
 <br>
 
-Berdasarkan distribusi nilai pada kolom-kolom kategorikal, ditemukan bahwa kolom `City` dan `Profession` memiliki beberapa kategori dengan jumlah data yang sangat sedikit (dominan pada satu kategori saja). Selain itu, kolom City juga memiliki terlalu banyak kategori, yang ***dapat menyebabkan curse of dimensionality***. Oleh karena itu, kedua kolom tersebut akan dihapus dari dataset.
-
-Selain itu, pada kolom `Sleep Duration`, `Dietary Habits`, dan `Degree`, terdapat kategori bernilai "Others" yang tidak merepresentasikan informasi yang jelas serta jumlahnya sangat sedikit. Maka dari itu, baris data yang memiliki nilai "Others" pada fitur-fitur tersebut akan dihapus dari dataset.
+Distribusi data kategorikal menunjukkan ketimpangan pada beberapa fitur, seperti `ChestPainType` dan `ST_Slope`. Ketimpangan ini dapat memengaruhi kinerja model, sehingga perlu penanganan khusus. Salah satu cara efektif adalah menggunakan **One-Hot Encoding**, yang mengubah setiap kategori menjadi kolom biner tanpa memberi makna urutan. Pendekatan ini membantu model memahami setiap kategori secara adil dan mencegah bias terhadap kategori mayoritas.
 
 **2. Distribusi Data Numerik**
 <br>
