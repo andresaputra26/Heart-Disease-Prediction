@@ -61,7 +61,7 @@ Dataset ini berisi informasi klinis dan demografis pasien yang digunakan untuk m
 
 Dari hasil analisis awal deskripsi data, terlihat bahwa data siap untuk tahap selanjutnya.
 
-### Distribusi Data Target (Depression)
+### Distribusi Data Target (HeartDisease)
 
 <br>
 <image src='image/distribusi_target.png' width= 500/>
