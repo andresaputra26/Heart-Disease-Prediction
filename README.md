@@ -321,6 +321,7 @@ di mana:
 - **Precision**: Precision adalah metrik yang lebih spesifik daripada akurasi untuk mengukur salah-satu label sebagai entitas terpisah. Precision mengukur: dari semua prediksi pada label tertentu (dalam hal ini label positif), berapa persen yang prediksinya benar. Atau dalam bahasa yang lebih teknis, precision adalah rasio antara prediksi positif yang benar (true positive) dengan total prediksi positif (baik yang benar maupun salah).  
 <img src="images/Precision.png" align="center"><br>
 - **Recall**: Recall mengukur seberapa banyak kasus positif dari semua data yang aktualnya beneran positif. Metrik ini penting ketika kita ingin meminimalkan kesalahan negatif (false negative), seperti pada deteksi penyakit di mana kita tidak ingin ada pasien yang sakit tetapi diklasifikasikan sebagai sehat. Secara teknis dalam confusion matrix, recall adalah rasio antara prediksi positif yang benar dengan total jumlah data yang sebenarnya positif.
+
 <img src="images/Recall.png" align="center"><br>
 
 **ROC (Receiver Operating Characteristic)** adalah grafik yang digunakan untuk mengevaluasi kinerja model klasifikasi biner. Grafik ini menggambarkan kemampuan model dalam membedakan antara kelas positif dan negatif pada berbagai threshold (ambang batas) probabilitas.
