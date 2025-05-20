@@ -9,8 +9,8 @@ Penyakit jantung dikenal sebagai salah satu penyebab utama kematian di dunia, te
 Penggunaan teknologi seperti machine learning dan analisis data kesehatan berperan penting dalam deteksi dini penyakit jantung. Dengan menganalisis data klinis dan gaya hidup, algoritma dapat mengenali pola dan faktor risiko secara akurat. Model prediktif ini membantu tenaga medis membuat keputusan lebih cepat dan tepat, serta memungkinkan pemantauan kesehatan secara berkala untuk mencegah kondisi memburuk. Pendekatan ini mendukung sistem kesehatan yang lebih preventif dan berpotensi menurunkan angka kematian akibat penyakit jantung.
 
 **Referensi:**
-- [World Heart Federation. (2024). Heart Failure](https://world-heart-federation.org/what-we-do/heart-failure/)
-- [Kementerian Kesehatan RI. (2018). Laporan Nasional Riskesdas 2018](https://repository.badankebijakan.kemkes.go.id/id/eprint/3514/1/Laporan%20Riskesdas%202018%20Nasional.pdf)
+- [Columbia Asia. (2024). Penyakit Jantung: Ancaman Tersembunyi](https://columbiaasia.co.id/artikel/kesehatan/penyakit-jantung-ancaman-tersembunyi/)
+- [Kementerian Kesehatan Republik Indonesia. (2021). Penyakit Jantung, Penyebab Kematian Nomor Satu di Dunia](https://lms.kemkes.go.id/courses/35bff824-437e-4557-b37a-94b128c43333)
 
 ## Business Understanding
 
@@ -330,8 +330,7 @@ Penggunaan metrik recall sangat penting untuk memastikan model mampu menangkap s
 <img src="images/visualisasi_alltuning.png" align="center"><br>
 
 ## Referensi
-1. World Health Organization. (2020). Depression. Retrieved from: https://www.who.int/news-room/fact-sheets/detail/depression
-2. American College Health Association. (2021). ACHA-National College Health Assessment III: Undergraduate Student Reference Group Executive Summary Spring 2021.Retrieved from: https://www.sjsu.edu/wellness/docs/ncha-spring-2021-executive-summary.pdf
-3. Kementerian Kesehatan RI. (2018). Laporan Nasional Riskesdas 2018. Badan Penelitian dan Pengembangan Kesehatan, Kemenkes RI. Retrieved from: https://repository.badankebijakan.kemkes.go.id/id/eprint/3514/1/Laporan%20Riskesdas%202018%20Nasional.pdf
-4. https://haloryan.com/blog/apa-itu-akurasi-precision-recall-f1-score-rumus-cara-menghitungnya
-5. https://www.haloryan.com/blog/roc-auc-pengertian-fungsi-dan-cara-menggunakannya-dalam-machine-learning
+1. Columbia Asia. (2024). Penyakit Jantung: Ancaman Tersembunyi. Retrieved from: https://columbiaasia.co.id/artikel/kesehatan/penyakit-jantung-ancaman-tersembunyi/
+2. Kementerian Kesehatan Republik Indonesia. (2021). Penyakit Jantung, Penyebab Kematian Nomor Satu di Dunia. Retrieved from: https://lms.kemkes.go.id/courses/35bff824-437e-4557-b37a-94b128c43333
+3. https://haloryan.com/blog/apa-itu-akurasi-precision-recall-f1-score-rumus-cara-menghitungnya
+4. https://www.haloryan.com/blog/roc-auc-pengertian-fungsi-dan-cara-menggunakannya-dalam-machine-learning
