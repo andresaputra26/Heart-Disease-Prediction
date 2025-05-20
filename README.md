@@ -219,12 +219,16 @@ Pertama yang akan dilakukan yaitu menghapus kolom `FastingBS` yang sudah tidak d
 ### 2. Menangani Missing Values
 
 Pada dataset terlihat tidak terdapat missing value. 
+<br>
 <img src='images/handle_missingvalues.png' align="center"><br>
+<br> 
 
 ### 3. Menangani Data Duplikat
 
 Pada dataset terlihat tidak terdapat data duplikat. 
+<br> 
 <img src='images/handle_duplicated.png' align="center"><br>
+<br> 
 
 ### 4. Menghapus Outlier Values
 
