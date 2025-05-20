@@ -219,14 +219,19 @@ Pertama yang akan dilakukan yaitu menghapus kolom `FastingBS` yang sudah tidak d
 ### 2. Menangani Missing Values
 
 Pada dataset terlihat tidak terdapat missing value. 
-<img src='image/null_value.png' align="center"><br>
+<img src='images/handle_missingvalues.png' align="center"><br>
 
-### 3. Menghapus Outlier Values
+### 3. Menangani Data Duplikat
+
+Pada dataset terlihat tidak terdapat data duplikat. 
+<img src='images/handle_duplicated.png' align="center"><br>
+
+### 4. Menghapus Outlier Values
 
 Untuk menangani outlier, dilakukan penghapusan outlier pada kolom `RestingBP`, `Cholesterol`, `MaxHR` dan `Oldpeak` menggunakan metode IQR (Interquartile Range). Metode ini diterapkan untuk menghapus data yang berada di luar rentang batas bawah dan batas atas yang telah ditetapkan, sehingga menghasilkan data yang lebih rapi dan menggambarkan kondisi sebenarnya dengan lebih baik.
-<img src='image/outlier.png' align="center"><br>
+<img src='images/handle_outlier.png' align="center"><br>
 
-### 4. Encoding Fitur Kategori
+### 5. Encoding Fitur Kategori
 
 Di tahap ini, data kategori berupa teks atau label diubah menjadi format angka supaya bisa diproses oleh algoritma machine learning. Proses encoding pada fitur kategorikal dilakukan dalam dua tahap:
 
@@ -239,22 +244,22 @@ Di tahap ini, data kategori berupa teks atau label diubah menjadi format angka s
    - `RestingECG`
    - `ST_Slope`
 
-<img src="image/encoding.png" align="center"><br>
+<img src="images/encoding.png" align="center"><br>
 
-### 5. Train-Test-Split
+### 6. Train-Test-Split
 
 Data dibagi dengan rasio 80:20, di mana 80% dari data digunakan sebagai data pelatihan (training) untuk membangun dan mengoptimalkan model, sedangkan 20% sisanya dialokasikan sebagai data pengujian (testing). Pembagian ini bertujuan untuk memastikan proses evaluasi model berjalan secara objektif dan hasil pengujian mencerminkan kemampuan model dalam menghadapi data baru yang belum pernah dilihat sebelumnya. Dengan demikian, performa model dapat diukur secara akurat dan generalisasi model terhadap data nyata dapat dipantau.
-<img src="image/spliting_data.png" align="center"><br>
+<img src="images/data_split.png" align="center"><br>
 
-### 6. Transformasi Values
+### 7. Transformasi Values
 
 Dilakukan proses scaling menggunakan MinMaxScaler untuk menormalkan rentang nilai pada setiap fitur. Dengan metode ini, semua fitur diubah ke dalam skala yang seragam, biasanya antara 0 hingga 1, sehingga tidak ada fitur yang memiliki pengaruh berlebihan akibat perbedaan skala nilai. Hal ini membantu algoritma machine learning bekerja lebih efektif dan menghasilkan model yang lebih stabil.
-<img src="image/transformation_value.png" align="center"><br>
+<img src="images/minmaxscaler.png" align="center"><br>
 
-### 7. Menangani Data Imbalance
+### 8. Menangani Data Imbalance
 
 Untuk mengatasi ketidakseimbangan kelas pada data latih, digunakan teknik SMOTE (Synthetic Minority Over-sampling Technique) yang menambahkan data sintetis pada kelas yang jumlahnya lebih sedikit. Selain itu, pengujian juga dilakukan pada data tanpa penerapan SMOTE guna membandingkan tingkat akurasi dan menilai sejauh mana metode ini efektif dalam meningkatkan performa model.
-<img src="image/imbalance_data.png" align="center"><br>
+<img src="images/smote.png" align="center"><br>
 
 ## Modeling
 
