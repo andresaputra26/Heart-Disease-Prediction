@@ -76,15 +76,15 @@ Distribusi data pada label `HeartDisease` adalah cukup imbalance (55.3% vs 44.7%
 
 **2. Distribusi Data Kategorikal**
 <br>
-<image src='image/distribusi_data_kategorik.png' width= 500/>
+<image src='images/barchart_cat.png' width= 500/>
 <br>
 
 Distribusi data kategorikal menunjukkan ketimpangan pada beberapa fitur, seperti `ChestPainType` dan `ST_Slope`. Ketimpangan ini dapat memengaruhi kinerja model, sehingga perlu penanganan khusus. Salah satu cara efektif adalah menggunakan **One-Hot Encoding**, yang mengubah setiap kategori menjadi kolom biner tanpa memberi makna urutan. Pendekatan ini membantu model memahami setiap kategori secara adil dan mencegah bias terhadap kategori mayoritas.
 
 **3. Distribusi Data Numerik**
 <br>
-<image src='image/distribusi_data_numerik.png' width= 500/>
-<image src='image/boxplot_data_numerik.png' width= 500/>
+<image src='images/Histogram_num.png' width= 500/>
+<image src='images/Boxplot_num.png' width= 500/>
 <br> 
 Dari gambar histogram menggambarkan sebaran nilai dan frekuensi kemunculannya. Sebagian besar distribusi menunjukkan bentuk mendekati normal (seperti `Age` dan `MaxHR`), namun beberapa memiliki sebaran yang condong atau outlier ekstrem, seperti `Cholesterol` dan `Oldpeak`
 
@@ -92,8 +92,7 @@ Boxplot menunjukkan bahwa sebagian besar fitur memiliki outlier, terutama pada R
 
 **4. Matriks korelasi kolom numerik**
 <br>
-<image src='image/distribusi_data_numerik.png' width= 500/>
-<image src='image/boxplot_data_numerik.png' width= 500/>
+<image src='images/Correlation_matrix.png' width= 500/>
 <br> 
 Berdasarkan korelasi antar fitur numerik, tidak ditemukan fitur yang redundant dalam dataset ini. Nilai korelasi antar fitur mayoritas rendah, di bawah 0.3, sehingga setiap fitur memberikan informasi yang unik dan layak dipertahankan untuk analisis atau pemodelan.
 
@@ -101,7 +100,7 @@ Berdasarkan korelasi antar fitur numerik, tidak ditemukan fitur yang redundant d
 ## Kategorikal
 **1. Sex vs HeartDisease**
 <br>
-<image src='image/gender.png' width= 500/>
+<image src='images/Sex vs HeartDisease.png' width= 500/>
 <br>
 - Pria (M) cenderung memiliki jumlah kasus penyakit jantung (HeartDisease = Yes) sebesar 90.2% yang jauh lebih banyak dibandingkan wanita (F) yang sebesar 9.8%.
 - Wanita memiliki jumlah kasus negatif sebesar 34.9% (tidak ada penyakit jantung) yang lebih tinggi dibandingkan kasus positif yang sebesar 9.8%.
@@ -110,7 +109,7 @@ Indikasi: Jenis kelamin pria memiliki risiko lebih tinggi terkena penyakit jantu
 
 **2. ChestPainType vs HeartDisease**
 <br>
-<image src='image/pemikiran_bunuh_diri.png' width= 500/>
+<image src='images/ChestPainType vs HeartDisease.png' width= 500/>
 <br>
 - Tipe nyeri dada ASY (Asymptomatic) memiliki jumlah kasus penyakit jantung yang sangat tinggi dibandingkan tipe lainnya.
 - Tipe ATA (Atypical angina), NAP (Non-anginal pain), dan TA (Typical angina) cenderung lebih banyak ditemukan pada pasien tanpa penyakit jantung.
@@ -119,7 +118,7 @@ Indikasi: Nyeri dada tipe Asymptomatic berpotensi menjadi indikator kuat penyaki
 
 **3. RestingECG vs HeartDisease**
 <br>
-<image src='image/tekanan_akademik.png' width= 500/>
+<image src='images/RestingECG vs HeartDisease.png' width= 500/>
 <br>
 - Pada kategori Normal, distribusi pasien dengan dan tanpa penyakit jantung tampak seimbang.
 - Kategori ST dan LVH lebih banyak ditemukan pada pasien dengan penyakit jantung.
@@ -128,7 +127,7 @@ Indikasi: Abnormalitas pada Resting ECG (ST, LVH) bisa mengindikasikan adanya pe
 
 **4. ExerciseAngina vs HeartDisease**
 <br>
-<image src='image/umur.png' width= 500/>
+<image src='images/ExerciseAngina vs HeartDisease.png' width= 500/>
 <br> 
 - Pasien dengan ExerciseAngina = Y (ya) cenderung lebih banyak yang positif penyakit jantung.
 - Sebaliknya, pasien tanpa exercise angina (N) mayoritas tidak memiliki penyakit jantung.
@@ -137,7 +136,7 @@ Indikasi: Exercise angina mungkin menjadi tanda yang cukup kuat adanya penyakit 
 
 **5. ST_Slope vs HeartDisease**
 <br>
-<image src='image/waktu_belajar.png' width= 500/>
+<image src='images/ST_Slope vs HeartDisease.png' width= 500/>
 <br> 
 - Kategori Flat pada ST slope tampak terkait dengan jumlah kasus penyakit jantung yang tinggi.
 - Kategori Up lebih sering ditemukan pada pasien tanpa penyakit jantung.
@@ -148,7 +147,7 @@ Indikasi: ST slope Flat dan Down bisa menjadi indikator risiko penyakit jantung 
 ## Numerikal
 **1. Age vs HeartDisease**
 <br>
-<image src='image/waktu_belajar.png' width= 500/>
+<image src='images/waktu_belajar.png' width= 500/>
 <br> 
 - Distribusi: Terlihat pergeseran ke kanan pada grup penderita HeartDisease = Yes, artinya penderita cenderung lebih tua dibandingkan yang tidak.
 - Rata-rata:
