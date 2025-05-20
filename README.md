@@ -158,7 +158,7 @@ Indikasi: ST slope Flat dan Down bisa menjadi indikator risiko penyakit jantung 
 
 Pengaruh: Umur yang lebih tua meningkatkan kemungkinan terkena penyakit jantung, karena risiko penyakit jantung memang meningkat seiring bertambahnya usia.
 
-**7. RestingBP vs HeartDisease**
+**2. RestingBP vs HeartDisease**
 <br>
 <image src='image/waktu_belajar.png' width= 500/>
 <br> 
@@ -170,69 +170,91 @@ Pengaruh: Umur yang lebih tua meningkatkan kemungkinan terkena penyakit jantung,
 
 Pengaruh: enderita penyakit jantung cenderung memiliki tekanan darah istirahat yang sedikit lebih tinggi. Meskipun perbedaannya tidak terlalu besar, tekanan darah yang meningkat dapat menjadi faktor risiko tambahan terhadap penyakit jantung, terutama jika dikombinasikan dengan faktor risiko lainnya.
 
-**8. Age vs HeartDisease**
+**3. Cholesterol vs HeartDisease**
 <br>
 <image src='image/waktu_belajar.png' width= 500/>
 <br> 
-- Distribusi: Terlihat pergeseran ke kanan pada grup penderita HeartDisease = Yes, artinya penderita cenderung lebih tua dibandingkan yang tidak.
+- Distribusi: Terlihat bahwa kelompok HeartDisease = No memiliki distribusi kolesterol yang lebih tinggi dibandingkan dengan kelompok HeartDisease = Yes, yang cukup mengejutkan karena bertentangan dengan asumsi umum.
 - Rata-rata:
-  - All: 53.51
-  - No: 50.55
-  - Yes: 54.90
+  - All: 198.80
+  - No: 227.12
+  - Yes: 175.94
 
-Pengaruh: Umur yang lebih tua meningkatkan kemungkinan terkena penyakit jantung, karena risiko penyakit jantung memang meningkat seiring bertambahnya usia.
+Pengaruh: Secara mengejutkan, kolesterol rata-rata pada penderita penyakit jantung justru lebih rendah. Hal ini bisa disebabkan oleh berbagai faktor, seperti efek pengobatan yang menurunkan kolesterol, gaya hidup setelah diagnosis, atau distribusi data yang tidak merata. Oleh karena itu, kolesterol dalam dataset ini mungkin kurang representatif sebagai indikator tunggal untuk mendeteksi penyakit jantung.
+
+**4. MaxHR vs HeartDisease**
+<br>
+<image src='image/waktu_belajar.png' width= 500/>
+<br> 
+- Distribusi: Distribusi menunjukkan bahwa kelompok HeartDisease = No memiliki detak jantung maksimum yang lebih tinggi, sedangkan kelompok HeartDisease = Yes cenderung memiliki MaxHR yang lebih rendah.
+- Rata-rata:
+  - All: 136.81
+  - No: 148.15
+  - Yes: 127.66
+
+Pengaruh: Penderita penyakit jantung cenderung tidak mampu mencapai detak jantung maksimum yang tinggi saat beraktivitas fisik, yang bisa menjadi indikasi keterbatasan fungsi jantung. MaxHR yang lebih rendah merupakan sinyal penting adanya potensi gangguan jantung, sehingga fitur ini cukup signifikan dalam membedakan antara penderita dan non-penderita.
+
+**5. MaxHR vs HeartDisease**
+<br>
+<image src='image/waktu_belajar.png' width= 500/>
+<br> 
+- Distribusi: Sangat berbeda antar grup. Grup HeartDisease = Yes punya distribusi lebih menyebar ke kanan (nilai oldpeak lebih tinggi).
+- Rata-rata:
+  - All: 0.89
+  - No: 0.41
+  - Yes: 1.27
+
+Pengaruh: Oldpeak tinggi mengindikasikan abnormalitas EKG akibat iskemia (kurangnya aliran darah ke jantung), sehingga sangat erat kaitannya dengan penyakit jantung. Ini adalah salah satu fitur yang paling membedakan kedua grup.
 
 ## Data Preparation
 
-Pada tahap ini dilakukan proses transformasi pada data sehingga menjadi bentuk yang cocok untuk proses pemodelan. Beberapa tahap persiapan data yang dilakukan adalah:
+adalah proses mengubah dan mengolah data mentah agar siap digunakan dalam tahap pemodelan. Proses ini meliputi pembersihan, transformasi, dan penyesuaian format data agar sesuai dengan kebutuhan algoritma yang akan diterapkan. Dengan persiapan data yang tepat, model dapat belajar secara efektif dan menghasilkan prediksi yang akurat. Berikut adalah beberapa tahapannya:
 
-### 1. Menghapus Kolom & Kategori Values yang Tidak Penting
+### 1. Menghapus Kolom yang Tidak digunakan
 
-Pertama akan dilakukakn penghapusan pada kolom - kolom yang tidak akan digunakan lebih lanjut seperti kolom `Id`, `City`, `Profession`, `Job Satisfaction`, `Work Pressure` dan juga mengubah kategori nilai pada kolom `Financial Stress` yang bertipe data **object** menjadi **float**. dan tidak lupa untuk menghapus baris data yang memiliki nilai "Others" pada kolom `Sleep Duration`, `Dietary Habits`, dan `Degree` karana nilai "Others" tidak merepresentasikan informasi yang jelas.
+Pertama yang akan dilakukan yaitu menghapus kolom `FastingBS` yang sudah tidak digunakan lagi untuk tahap yang lebih lanjut.
 <br>
 <image src='image/menghapus_kolom_id.png' width= 500/>
-<image src='image/mengubah_kategori_nilai.png' width= 500/>
 <br> 
 
 ### 2. Menangani Missing Values
 
-Pada dataset terdapat missing value pada kolom `Financial Stress` sebanyak 3 data. Dikarenakan jumlahnya yang sedikit dan untuk menjaga keaslian data, maka diputuskan untuk menghapus baris-baris tersebut dari dataset.
+Pada dataset terlihat tidak terdapat missing value. 
 <img src='image/null_value.png' align="center"><br>
 
 ### 3. Menghapus Outlier Values
 
-Untuk menangani outlier, dilakukan penghapusan outlier pada kolom `Age` dan `CGPA` menggunakan metode IQR (Interquartile Range). Metode ini digunakan untuk menghilangkan nilai-nilai yang berada di luar batas bawah dan batas atas yang ditentukan, sehingga data menjadi lebih bersih dan representatif.
+Untuk menangani outlier, dilakukan penghapusan outlier pada kolom `RestingBP`, `Cholesterol`, `MaxHR` dan `Oldpeak` menggunakan metode IQR (Interquartile Range). Metode ini diterapkan untuk menghapus data yang berada di luar rentang batas bawah dan batas atas yang telah ditetapkan, sehingga menghasilkan data yang lebih rapi dan menggambarkan kondisi sebenarnya dengan lebih baik.
 <img src='image/outlier.png' align="center"><br>
 
 ### 4. Encoding Fitur Kategori
 
-Pada bagian ini, dilakukan transformasi data kategori (yang berbentuk teks atau label) menjadi format numerik agar dapat diproses oleh algoritma machine learning. Encoding fitur kategorikal dilakukan dalam 2 bagian:
+Di tahap ini, data kategori berupa teks atau label diubah menjadi format angka supaya bisa diproses oleh algoritma machine learning. Proses encoding pada fitur kategorikal dilakukan dalam dua tahap:
 
-1. **Label Encoding**: mengonversi nilai kategori menjadi angka integer (`0` dan `1`) untuk variabel biner seperti:
-   - `Gender`
-   - `Have you ever had suicidal thoughts ?`
-   - `Family History of Mental Illness`
+1. **Label Encoding**: mengubah nilai kategori menjadi bilangan bulat (seperti `0` dan `1`) pada variabel yang hanya memiliki dua kelas, berikut adalah kolomnya:
+   - `Sex`
+   - `ExerciseAngina`
 
-2. **One Hot Encoding**: mengubah setiap kategori menjadi kolom biner terpisah untuk data tidak terurut seperti:
-   - `Sleep Duration`
-   - `Dietary Habits`
-   - `Degree`
+2. One Hot Encoding: mengonversi setiap kategori menjadi kolom-kolom biner yang terpisah, digunakan untuk data kategori yang tidak memiliki urutan, berikut adalah kolomnya:
+   - `ChestPainType`
+   - `RestingECG`
+   - `ST_Slope`
 
 <img src="image/encoding.png" align="center"><br>
 
 ### 5. Train-Test-Split
 
-Data dibagi dengan proporsi 80:20, dimana 80% digunakan untuk training model dan 20% digunakan untuk testing model, untuk memastikan evaluasi yang objektif terhadap performa model.
+Data dibagi dengan rasio 80:20, di mana 80% dari data digunakan sebagai data pelatihan (training) untuk membangun dan mengoptimalkan model, sedangkan 20% sisanya dialokasikan sebagai data pengujian (testing). Pembagian ini bertujuan untuk memastikan proses evaluasi model berjalan secara objektif dan hasil pengujian mencerminkan kemampuan model dalam menghadapi data baru yang belum pernah dilihat sebelumnya. Dengan demikian, performa model dapat diukur secara akurat dan generalisasi model terhadap data nyata dapat dipantau.
 <img src="image/spliting_data.png" align="center"><br>
 
 ### 6. Transformasi Values
 
-Dilakukan scaling value dengan MinMaxScaler untuk menyamaratakan skala dari setiap fitur, sehingga tidak ada fitur yang mendominasi karena memiliki skala nilai yang lebih besar.
+Dilakukan proses scaling menggunakan MinMaxScaler untuk menormalkan rentang nilai pada setiap fitur. Dengan metode ini, semua fitur diubah ke dalam skala yang seragam, biasanya antara 0 hingga 1, sehingga tidak ada fitur yang memiliki pengaruh berlebihan akibat perbedaan skala nilai. Hal ini membantu algoritma machine learning bekerja lebih efektif dan menghasilkan model yang lebih stabil.
 <img src="image/transformation_value.png" align="center"><br>
 
 ### 7. Menangani Data Imbalance
 
-SMOTE (Synthetic Minority Over-sampling Technique) digunakan untuk mengatasi ketidakseimbangan kelas pada data latih. Pengujian juga dilakukan pada data tanpa SMOTE untuk membandingkan akurasi dan menilai efektivitas metode tersebut.
+Untuk mengatasi ketidakseimbangan kelas pada data latih, digunakan teknik SMOTE (Synthetic Minority Over-sampling Technique) yang menambahkan data sintetis pada kelas yang jumlahnya lebih sedikit. Selain itu, pengujian juga dilakukan pada data tanpa penerapan SMOTE guna membandingkan tingkat akurasi dan menilai sejauh mana metode ini efektif dalam meningkatkan performa model.
 <img src="image/imbalance_data.png" align="center"><br>
 
 ## Modeling
@@ -240,59 +262,62 @@ SMOTE (Synthetic Minority Over-sampling Technique) digunakan untuk mengatasi ket
 Pada project kali ini akan dilakukan percobaan terhadap beberapa algoritma machine learning yaitu:
 
 ### 1. Logistic Regression
-Logistic Regression adalah algoritma machine learning yang digunakan untuk klasifikasi, terutama klasifikasi biner. Algoritma ini memodelkan probabilitas suatu data masuk ke kelas tertentu menggunakan fungsi logistik (sigmoid). Logistic Regression mencoba menemukan garis pemisah (decision boundary) linear antara kelas.
+Logistic Regression adalah algoritma machine learning yang digunakan untuk tugas klasifikasi, terutama klasifikasi biner. Algoritma ini memodelkan probabilitas suatu data termasuk dalam kelas tertentu dengan menggunakan fungsi logistik (sigmoid). Logistic Regression mencari garis batas keputusan (decision boundary) linier antara kelas-kelas.
 **Kelebihan:**
-* Sederhana dan cepat untuk dilatih.
-* Mudah diinterpretasikan melalui nilai koefisien fitur.
-* Cocok untuk kasus klasifikasi biner.
+* Sederhana dan cepat dalam pelatihan.
+* Mudah diinterpretasikan melalui koefisien fitur.
+* Efektif untuk data yang memiliki hubungan linier.
 
 **Kekurangan:**
-* Sensitif terhadap multikolinearitas.
-* Kurang efektif jika banyak outlier.
+* Kurang cocok untuk data dengan hubungan non-linier yang kompleks.
+* Sensitif terhadap multikolinearitas antar fitur.
+* Kinerjanya menurun jika terdapat banyak outlier.
 
-### 2. Decision Tree
-Decision Tree adalah algoritma klasifikasi yang bekerja dengan membagi dataset berdasarkan fitur menjadi cabang-cabang seperti struktur pohon. Setiap node dalam pohon mewakili fitur, dan setiap daun mewakili kelas. Algoritma ini menggunakan pemisahan berdasarkan kriteria tertentu (seperti Gini atau Entropy) untuk membuat keputusan.
-
-**Kelebihan:**
-* Bisa menangani data numerik dan kategorikal.
-* Tidak memerlukan normalisasi atau scaling data.
-* Dapat menangkap hubungan non-linear antara fitur.
-
-**Kekurangan:**
-* Rentan terhadap overfitting, terutama pada data kompleks.
-* Sensitif terhadap perubahan kecil pada data.
-* Bisa membuat model yang terlalu dalam atau kompleks.
-
-### 3. XGBoost
-XGBoost adalah algoritma boosting yang sangat efisien dan akurat. Algoritma ini bekerja dengan membangun banyak pohon keputusan secara bertahap, di mana setiap pohon mencoba memperbaiki kesalahan dari pohon sebelumnya. XGBoost dilengkapi dengan teknik regularisasi dan optimisasi untuk mencegah overfitting dan meningkatkan performa.
+### 2. Random Forest
+Random Forest adalah algoritma ensemble learning yang membentuk banyak pohon keputusan (decision tree) dan menggabungkan hasilnya untuk meningkatkan akurasi dan mengurangi overfitting. Setiap pohon dilatih pada subset acak dari data dan fitur, sehingga menciptakan model yang lebih stabil dan tahan terhadap noise.
 
 **Kelebihan:**
-* Mampu menangani missing value secara otomatis.
-* Dilengkapi dengan regularisasi untuk menghindari overfitting.
-* Cepat dalam pelatihan dan prediksi.
+* Dapat menangani data numerik maupun kategorikal.
+* Kurang rentan terhadap overfitting dibanding single decision tree.
+* Memberikan estimasi pentingnya fitur (feature importance).
 
 **Kekurangan:**
-* Lebih kompleks dan sulit untuk dipahami secara menyeluruh.
-* Membutuhkan waktu tuning hyperparameter yang tidak sedikit.
-* Mengonsumsi memori dan waktu lebih banyak dibanding model sederhana.
+* Kurang interpretatif dibanding model yang lebih sederhana.
+* Membutuhkan lebih banyak waktu dan sumber daya dibanding algoritma dasar.
+* Tidak secepat model linear pada dataset besar.
+
+### 3. Gradient Boosting
+Gradient Boosting adalah algoritma ensemble yang membangun model secara bertahap, di mana setiap model baru mencoba memperbaiki kesalahan dari model sebelumnya. Model ini sangat kuat karena mampu menangani data kompleks dan non-linier, serta memiliki performa tinggi pada banyak tugas klasifikasi.
+
+**Kelebihan:**
+* Performa tinggi dalam banyak kasus klasifikasi dan regresi.
+* Mampu menangkap hubungan non-linier antar fitur.
+* Dapat dikombinasikan dengan teknik regularisasi untuk mengurangi overfitting.
+
+**Kekurangan:**
+* Proses pelatihan relatif lambat.
+* Memerlukan tuning hyperparameter yang cermat untuk hasil optimal.
+* Lebih kompleks dan sulit untuk diinterpretasikan dibanding model sederhana.
 
 ## Evaluation
 
-Untuk mengevaluasi kinerja model dalam mendeteksi risiko depresi pada mahasiswa, digunakan metrik **F1 Score**. Pemilihan metrik ini didasarkan pada karakteristik masalah yang memiliki distribusi kelas tidak seimbang dan dampak serius apabila terjadi kesalahan klasifikasi.
+Untuk mengevaluasi kinerja model dalam mendeteksi risiko penyakit jantung, digunakan beberapa metrik evaluasi, yaitu recall, F1-score, dan ROC (Receiver Operating Characteristic). Penggunaan metrik ini didasarkan pada karakteristik masalah yang memiliki distribusi kelas tidak seimbang serta potensi dampak serius jika terjadi kesalahan klasifikasi. Recall digunakan untuk menilai kemampuan model dalam mengidentifikasi seluruh kasus positif (individu yang berisiko penyakit jantung), F1-score memberikan keseimbangan antara presisi dan recall, sementara ROC membantu mengevaluasi performa model pada berbagai ambang batas klasifikasi.
 
 ### F1 Score
 
-**F1 Score** merupakan metrik yang menggabungkan **Precision** dan **Recall** dalam satu nilai harmonis, dengan rumus:
+**F1 Score** adalah metrik yang menggabungkan precision dan recall. F1-score sangat berguna ketika kita menghadapi ketidakseimbangan kelas dalam dataset. Nilai F1-score adalah rata-rata harmonis antara precision dan recall, memberikan keseimbangan antara kedua metrik tersebut. F1-score memberikan keseimbangan antara precision dan recall, yang berguna ketika keduanya sama pentingnya, dengan rumus:
 
 <img src="image/f1score_image.png" align="center"><br>
 
 di mana:
-- **Precision**: Persentase prediksi positif yang benar-benar positif.  
+- **Precision**: Precision adalah metrik yang lebih spesifik daripada akurasi untuk mengukur salah-satu label sebagai entitas terpisah. Precision mengukur: dari semua prediksi pada label tertentu (dalam hal ini label positif), berapa persen yang prediksinya benar. Atau dalam bahasa yang lebih teknis, precision adalah rasio antara prediksi positif yang benar (true positive) dengan total prediksi positif (baik yang benar maupun salah).  
 <img src="image/precision_formulas.png" align="center"><br>
-- **Recall**: Persentase kasus positif yang berhasil diprediksi sebagai positif.  
+- **Recall**: Recall mengukur seberapa banyak kasus positif dari semua data yang aktualnya beneran positif. Metrik ini penting ketika kita ingin meminimalkan kesalahan negatif (false negative), seperti pada deteksi penyakit di mana kita tidak ingin ada pasien yang sakit tetapi diklasifikasikan sebagai sehat. Secara teknis dalam confusion matrix, recall adalah rasio antara prediksi positif yang benar dengan total jumlah data yang sebenarnya positif.
 <img src="image/recall_formulas.png" align="center"><br>
 
-Penggunaan F1 Score sangat sesuai untuk situasi di mana keseimbangan antara **False Positive** dan **False Negative** penting untuk dipertahankan, seperti dalam kasus deteksi risiko depresi pada mahasiswa. Berdasarkan hasil evaluasi, model **Logistic Regression** memperoleh nilai F1 Score tertinggi sebesar **0,87**, menunjukkan bahwa model ini mampu menjaga keseimbangan terbaik antara ketepatan dalam mendeteksi depresi dan kepekaan dalam menjangkau kasus positif dibandingkan model lainnya.
+**ROC (Receiver Operating Characteristic)** adalah grafik yang digunakan untuk mengevaluasi kinerja model klasifikasi biner. Grafik ini menggambarkan kemampuan model dalam membedakan antara kelas positif dan negatif pada berbagai threshold (ambang batas) probabilitas.
+
+Penggunaan metrik recall sangat penting untuk memastikan model mampu menangkap sebanyak mungkin kasus positif, sedangkan F1 Score sangat sesuai untuk menjaga keseimbangan antara False Positive dan False Negative, terutama dalam deteksi risiko penyakit jantung. Berdasarkan hasil evaluasi, model Gradient Boosting mencapai recall sebesar 0,92, F1 Score sebesar 0,92, dan ROC AUC sebesar 0,91, yang menunjukkan bahwa model ini memiliki kepekaan tinggi dalam mendeteksi kasus positif sekaligus performa klasifikasi yang kuat dibandingkan model lain.
 
 <img src="image/perbandingan_score.png" align="center"><br>
 
@@ -300,4 +325,5 @@ Penggunaan F1 Score sangat sesuai untuk situasi di mana keseimbangan antara **Fa
 1. World Health Organization. (2020). Depression. Retrieved from: https://www.who.int/news-room/fact-sheets/detail/depression
 2. American College Health Association. (2021). ACHA-National College Health Assessment III: Undergraduate Student Reference Group Executive Summary Spring 2021.Retrieved from: https://www.sjsu.edu/wellness/docs/ncha-spring-2021-executive-summary.pdf
 3. Kementerian Kesehatan RI. (2018). Laporan Nasional Riskesdas 2018. Badan Penelitian dan Pengembangan Kesehatan, Kemenkes RI. Retrieved from: https://repository.badankebijakan.kemkes.go.id/id/eprint/3514/1/Laporan%20Riskesdas%202018%20Nasional.pdf
-4. https://medium.com/@andimrinaldisaputraa/memahami-dan-menerapkan-matriks-evaluasi-roc-auc-dalam-machine-learning-4468e5fcb9a
+4. https://haloryan.com/blog/apa-itu-akurasi-precision-recall-f1-score-rumus-cara-menghitungnya
+5. https://www.haloryan.com/blog/roc-auc-pengertian-fungsi-dan-cara-menggunakannya-dalam-machine-learning
