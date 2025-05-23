@@ -1,5 +1,11 @@
 # Laporan Proyek Machine Learning
 
+Nama : Andre Saputra Ginting
+
+Username : andresaputra26
+
+Email : andresaputra260604@gmail.com
+
 ## Domain Proyek: Heart Diseases Analytics
 
 Penyakit jantung merupakan penyebab utama kematian di dunia dan sering tidak terdeteksi hingga gejala serius muncul atau terjadi serangan jantung mendadak tanpa peringatan. Kondisi ini disebut sebagai "penyakit tersembunyi" karena gejala awal seperti kelelahan, nyeri dada ringan, atau sesak napas sering disalahartikan sebagai masalah ringan, sehingga banyak penderita tidak memperoleh diagnosis dan pengobatan tepat waktu. Kurangnya kesadaran ini meningkatkan risiko komplikasi serius yang sebenarnya dapat dicegah dengan deteksi dini dan penanganan yang tepat.
