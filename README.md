@@ -226,9 +226,8 @@ Pada dataset terlihat tidak terdapat missing value.
 ### 3. Menangani Data Duplikat
 
 Pada dataset terlihat tidak terdapat data duplikat. 
-<br> 
-<img src='images/handle_duplicated.png' align="center"><br>
-<br> 
+
+![alternative text](images/handle_duplicated.png)
 
 ### 4. Menghapus Outlier Values
 
