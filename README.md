@@ -241,6 +241,8 @@ Untuk menangani outlier, dilakukan penghapusan outlier pada kolom `RestingBP`, `
 
 Di tahap ini, data kategori berupa teks atau label diubah menjadi format angka supaya bisa diproses oleh algoritma machine learning. Proses encoding pada fitur kategorikal dilakukan dalam dua tahap:
 
+![alternative text](images/encoding.png)
+
 1. **Label Encoding**: mengubah nilai kategori menjadi bilangan bulat (seperti `0` dan `1`) pada variabel yang hanya memiliki dua kelas, berikut adalah kolomnya:
    - `Sex`
    - `ExerciseAngina`
@@ -249,8 +251,6 @@ Di tahap ini, data kategori berupa teks atau label diubah menjadi format angka s
    - `ChestPainType`
    - `RestingECG`
    - `ST_Slope`
-
-![alternative text](images/encoding.png)
 
 ### 6. Train-Test-Split
 
