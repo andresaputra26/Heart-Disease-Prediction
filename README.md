@@ -208,11 +208,13 @@ adalah proses mengubah dan mengolah data mentah agar siap digunakan dalam tahap 
 ### 1. Menghapus Kolom yang Tidak digunakan
 
 Pertama yang akan dilakukan yaitu menghapus kolom `FastingBS` yang sudah tidak digunakan lagi untuk tahap yang lebih lanjut.
+
 ![alternative text](images/drop_colomn.png)
 
 ### 2. Menangani Missing Values
 
 Pada dataset terlihat tidak terdapat missing value. 
+
 ![alternative text](images/handle_missingvalues.png) 
 
 ### 3. Menangani Data Duplikat
@@ -224,6 +226,7 @@ Pada dataset terlihat tidak terdapat data duplikat.
 ### 4. Menghapus Outlier Values
 
 Untuk menangani outlier, dilakukan penghapusan outlier pada kolom `RestingBP`, `Cholesterol`, `MaxHR` dan `Oldpeak` menggunakan metode IQR (Interquartile Range). Metode ini diterapkan untuk menghapus data yang berada di luar rentang batas bawah dan batas atas yang telah ditetapkan, sehingga menghasilkan data yang lebih rapi dan menggambarkan kondisi sebenarnya dengan lebih baik.
+
 ![alternative text](images/handle_outlier.png)
 
 ### 5. Encoding Fitur Kategori
@@ -239,12 +242,13 @@ Di tahap ini, data kategori berupa teks atau label diubah menjadi format angka s
    - `RestingECG`
    - `ST_Slope`
 
-<img src="images/encoding.png" align="center"><br>
+![alternative text](images/encoding.png)
 
 ### 6. Train-Test-Split
 
 Data dibagi dengan rasio 80:20, di mana 80% dari data digunakan sebagai data pelatihan (training) untuk membangun dan mengoptimalkan model, sedangkan 20% sisanya dialokasikan sebagai data pengujian (testing). Pembagian ini bertujuan untuk memastikan proses evaluasi model berjalan secara objektif dan hasil pengujian mencerminkan kemampuan model dalam menghadapi data baru yang belum pernah dilihat sebelumnya. Dengan demikian, performa model dapat diukur secara akurat dan generalisasi model terhadap data nyata dapat dipantau.
-<img src="images/data_split.png" align="center"><br>
+
+![alternative text](images/data_split.png)
 
 ### 7. Transformasi Values
 
