@@ -310,6 +310,16 @@ Gradient Boosting adalah algoritma ensemble yang membangun model secara bertahap
 
 Untuk mengevaluasi kinerja model dalam mendeteksi risiko penyakit jantung, digunakan beberapa metrik evaluasi, yaitu recall, F1-score, dan ROC (Receiver Operating Characteristic). Penggunaan metrik ini didasarkan pada karakteristik masalah yang memiliki distribusi kelas tidak seimbang serta potensi dampak serius jika terjadi kesalahan klasifikasi. Recall digunakan untuk menilai kemampuan model dalam mengidentifikasi seluruh kasus positif (individu yang berisiko penyakit jantung), F1-score memberikan keseimbangan antara presisi dan recall, sementara ROC membantu mengevaluasi performa model pada berbagai ambang batas klasifikasi.
 
+### Hasil perbandingan model sebelum dan sesudah dilakukan hyperparameter tuning
+| Model                               | Acc Train | Acc Test | Prec Train | Prec Test | Rec Train | Rec Test | F1 Train | F1 Test | ROC Train | ROC Test |
+| ----------------------------------- | --------- | -------- | ---------- | --------- | --------- | -------- | -------- | ------- | --------- | -------- |
+| Random Forest (Before Tuning)       | 1.000     | 0.929    | 1.000      | 0.910     | 1.000     | 0.959    | 1.000    | 0.934   | 1.000     | 0.927    |
+| Random Forest (Tuned)               | 0.902     | 0.908    | 0.888      | 0.877     | 0.892     | 0.959    | 0.890    | 0.916   | 0.901     | 0.905    |
+| Gradient Boosting (Before Tuning)   | 0.964     | 0.887    | 0.953      | 0.892     | 0.968     | 0.892    | 0.960    | 0.892   | 0.965     | 0.886    |
+| Gradient Boosting (Tuned)           | 0.941     | 0.915    | 0.925      | 0.919     | 0.944     | 0.919    | 0.935    | 0.919   | 0.941     | 0.915    |
+| K-Nearest Neighbors (Before Tuning) | 0.875     | 0.894    | 0.844      | 0.873     | 0.884     | 0.932    | 0.863    | 0.902   | 0.876     | 0.892    |
+| K-Nearest Neighbors (Tuned)         | 1.000     | 0.908    | 1.000      | 0.886     | 1.000     | 0.946    | 1.000    | 0.915   | 1.000     | 0.906    |
+
 ### F1 Score
 
 **F1 Score** adalah metrik yang menggabungkan precision dan recall. F1-score sangat berguna ketika kita menghadapi ketidakseimbangan kelas dalam dataset. Nilai F1-score adalah rata-rata harmonis antara precision dan recall, memberikan keseimbangan antara kedua metrik tersebut. F1-score memberikan keseimbangan antara precision dan recall, yang berguna ketika keduanya sama pentingnya, dengan rumus:
