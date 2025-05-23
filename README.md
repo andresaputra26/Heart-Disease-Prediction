@@ -151,7 +151,7 @@ Indikasi: ST slope Flat dan Down bisa menjadi indikator risiko penyakit jantung 
 ## Numerikal
 **1. Age vs HeartDisease**
 
-![alternative text](images/Distribution_of_Age_by_HeartDisease)
+![alternative text](images/Distribution_of_Age_by_HeartDisease.png)
 
 - Distribusi: Terlihat pergeseran ke kanan pada grup penderita HeartDisease = Yes, artinya penderita cenderung lebih tua dibandingkan yang tidak.
 - Rata-rata:
