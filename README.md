@@ -66,78 +66,57 @@ Dari hasil analisis awal deskripsi data, terlihat bahwa data siap untuk tahap se
 #### Analisis Univariat
 
 **1. Distribusi Data Target (HeartDisease)**
-
-<br>
-<image src='images/distribusi_datatarget.png' width= 500/>
-<br>
-
+![alternative text](images/distribusi_datatarget.png)
 Distribusi data pada label `HeartDisease` adalah cukup imbalance (55.3% vs 44.7%). Hal ini harus diperhatikan saat pelatihan model, agar tidak menghasilkan prediksi yang berat sebelah. Metrik evaluasi yang tepat dan teknik penyeimbangan data seperti oversampling pada data train (saat setelah membagi data) bisa membantu mengatasi masalah ini.
 
 
 **2. Distribusi Data Kategorikal**
-<br>
-<image src='images/barchart_cat.png' width= 500/>
-<br>
-
+![alternative text](images/barchart_cat.png)
 Distribusi data kategorikal menunjukkan ketimpangan pada beberapa fitur, seperti `ChestPainType` dan `ST_Slope`. Ketimpangan ini dapat memengaruhi kinerja model, sehingga perlu penanganan khusus. Salah satu cara efektif adalah menggunakan **One-Hot Encoding**, yang mengubah setiap kategori menjadi kolom biner tanpa memberi makna urutan. Pendekatan ini membantu model memahami setiap kategori secara adil dan mencegah bias terhadap kategori mayoritas.
 
 **3. Distribusi Data Numerik**
-<br>
-<image src='images/Histogram_num.png' width= 500/>
-<image src='images/Boxplot_num.png' width= 500/>
-<br> 
+![alternative text](images/Histogram_num.png)
+![alternative text](images/Boxplot_num.png)
 Dari gambar histogram menggambarkan sebaran nilai dan frekuensi kemunculannya. Sebagian besar distribusi menunjukkan bentuk mendekati normal (seperti `Age` dan `MaxHR`), namun beberapa memiliki sebaran yang condong atau outlier ekstrem, seperti `Cholesterol` dan `Oldpeak`
 
 Boxplot menunjukkan bahwa sebagian besar fitur memiliki outlier, terutama pada RestingBP, Cholesterol, dan Oldpeak, sedangkan Age dan MaxHR memiliki sebaran yang relatif normal. Fitur FastingBS didominasi oleh nilai 0 dan minim variasi, sehingga dianggap tidak informatif dan akhirnya dihapus karena berpotensi tidak berkontribusi signifikan terhadap performa model.
 
 **4. Matriks korelasi kolom numerik**
-<br>
-<image src='images/Correlation_matrix.png' width= 500/>
-<br> 
+![alternative text](images/Correlation_matrix.png)
 Berdasarkan korelasi antar fitur numerik, tidak ditemukan fitur yang redundant dalam dataset ini. Nilai korelasi antar fitur mayoritas rendah, di bawah 0.3, sehingga setiap fitur memberikan informasi yang unik dan layak dipertahankan untuk analisis atau pemodelan.
 
 #### Analisis Multivariat
 ## Kategorikal
 **1. Sex vs HeartDisease**
-<br>
-<image src='images/Sex vs HeartDisease.png' width= 500/>
-<br>
+![alternative text](images/Sex.png)
 - Pria (M) cenderung memiliki jumlah kasus penyakit jantung (HeartDisease = Yes) sebesar 90.2% yang jauh lebih banyak dibandingkan wanita (F) yang sebesar 9.8%.
 - Wanita memiliki jumlah kasus negatif sebesar 34.9% (tidak ada penyakit jantung) yang lebih tinggi dibandingkan kasus positif yang sebesar 9.8%.
 
 Indikasi: Jenis kelamin pria memiliki risiko lebih tinggi terkena penyakit jantung.
 
 **2. ChestPainType vs HeartDisease**
-<br>
-<image src='images/ChestPainType vs HeartDisease.png' width= 500/>
-<br>
+![alternative text](images/ChestPainType.png)
 - Tipe nyeri dada ASY (Asymptomatic) memiliki jumlah kasus penyakit jantung yang sangat tinggi dibandingkan tipe lainnya.
 - Tipe ATA (Atypical angina), NAP (Non-anginal pain), dan TA (Typical angina) cenderung lebih banyak ditemukan pada pasien tanpa penyakit jantung.
 
 Indikasi: Nyeri dada tipe Asymptomatic berpotensi menjadi indikator kuat penyakit jantung.
 
 **3. RestingECG vs HeartDisease**
-<br>
-<image src='images/RestingECG vs HeartDisease.png' width= 500/>
-<br>
+![alternative text](images/RestingECG.png)
 - Pada kategori Normal, distribusi pasien dengan dan tanpa penyakit jantung tampak seimbang.
 - Kategori ST dan LVH lebih banyak ditemukan pada pasien dengan penyakit jantung.
 
 Indikasi: Abnormalitas pada Resting ECG (ST, LVH) bisa mengindikasikan adanya penyakit jantung.
 
 **4. ExerciseAngina vs HeartDisease**
-<br>
-<image src='images/ExerciseAngina vs HeartDisease.png' width= 500/>
-<br> 
+![alternative text](images/ExerciseAngina.png)
 - Pasien dengan ExerciseAngina = Y (ya) cenderung lebih banyak yang positif penyakit jantung.
 - Sebaliknya, pasien tanpa exercise angina (N) mayoritas tidak memiliki penyakit jantung.
 
 Indikasi: Exercise angina mungkin menjadi tanda yang cukup kuat adanya penyakit jantung.
 
 **5. ST_Slope vs HeartDisease**
-<br>
-<image src='images/ST_Slope vs HeartDisease.png' width= 500/>
-<br> 
+![alternative text](images/ST_Slope.png)
 - Kategori Flat pada ST slope tampak terkait dengan jumlah kasus penyakit jantung yang tinggi.
 - Kategori Up lebih sering ditemukan pada pasien tanpa penyakit jantung.
 - Kategori Down juga lebih banyak pada pasien dengan penyakit jantung, meskipun jumlahnya lebih kecil dari Flat.
@@ -146,9 +125,7 @@ Indikasi: ST slope Flat dan Down bisa menjadi indikator risiko penyakit jantung 
 
 ## Numerikal
 **1. Age vs HeartDisease**
-<br>
-<image src='images/Distribution of Age by HeartDisease.png' width= 500/>
-<br> 
+![alternative text](images/Distribution_of_Age_by_HeartDisease)
 - Distribusi: Terlihat pergeseran ke kanan pada grup penderita HeartDisease = Yes, artinya penderita cenderung lebih tua dibandingkan yang tidak.
 - Rata-rata:
   - All: 53.51
@@ -158,9 +135,7 @@ Indikasi: ST slope Flat dan Down bisa menjadi indikator risiko penyakit jantung 
 Pengaruh: Umur yang lebih tua meningkatkan kemungkinan terkena penyakit jantung, karena risiko penyakit jantung memang meningkat seiring bertambahnya usia.
 
 **2. RestingBP vs HeartDisease**
-<br>
-<image src='images/Distribution of RestingBP by HeartDisease.png' width= 500/>
-<br> 
+![alternative text](images/Distribution_of_RestingBP_by_HeartDisease.png)
 - Distribusi: Kedua kelompok (HeartDisease = No dan Yes) memiliki distribusi yang mirip, namun terdapat sedikit pergeseran ke kanan pada kelompok HeartDisease = Yes, yang menunjukkan tekanan darah lebih tinggi.
 - Rata-rata:
   - All: 132.40
@@ -170,9 +145,7 @@ Pengaruh: Umur yang lebih tua meningkatkan kemungkinan terkena penyakit jantung,
 Pengaruh: enderita penyakit jantung cenderung memiliki tekanan darah istirahat yang sedikit lebih tinggi. Meskipun perbedaannya tidak terlalu besar, tekanan darah yang meningkat dapat menjadi faktor risiko tambahan terhadap penyakit jantung, terutama jika dikombinasikan dengan faktor risiko lainnya.
 
 **3. Cholesterol vs HeartDisease**
-<br>
-<image src='images/Distribution of Cholesterol by HeartDisease.png' width= 500/>
-<br> 
+![alternative text](images/Distribution_of_Cholesterol_by_HeartDisease.png)
 - Distribusi: Terlihat bahwa kelompok HeartDisease = No memiliki distribusi kolesterol yang lebih tinggi dibandingkan dengan kelompok HeartDisease = Yes, yang cukup mengejutkan karena bertentangan dengan asumsi umum.
 - Rata-rata:
   - All: 198.80
@@ -182,7 +155,7 @@ Pengaruh: enderita penyakit jantung cenderung memiliki tekanan darah istirahat y
 Pengaruh: Secara mengejutkan, kolesterol rata-rata pada penderita penyakit jantung justru lebih rendah. Hal ini bisa disebabkan oleh berbagai faktor, seperti efek pengobatan yang menurunkan kolesterol, gaya hidup setelah diagnosis, atau distribusi data yang tidak merata. Oleh karena itu, kolesterol dalam dataset ini mungkin kurang representatif sebagai indikator tunggal untuk mendeteksi penyakit jantung.
 
 **4. MaxHR vs HeartDisease**
-![alternative text](images/Distribution of MaxHR by HeartDisease.png)
+![alternative text](images/Distribution_of_MaxHR_by_HeartDisease.png)
 - Distribusi: Distribusi menunjukkan bahwa kelompok HeartDisease = No memiliki detak jantung maksimum yang lebih tinggi, sedangkan kelompok HeartDisease = Yes cenderung memiliki MaxHR yang lebih rendah.
 - Rata-rata:
   - All: 136.81
@@ -192,7 +165,7 @@ Pengaruh: Secara mengejutkan, kolesterol rata-rata pada penderita penyakit jantu
 Pengaruh: Penderita penyakit jantung cenderung tidak mampu mencapai detak jantung maksimum yang tinggi saat beraktivitas fisik, yang bisa menjadi indikasi keterbatasan fungsi jantung. MaxHR yang lebih rendah merupakan sinyal penting adanya potensi gangguan jantung, sehingga fitur ini cukup signifikan dalam membedakan antara penderita dan non-penderita.
 
 **5. Oldpeak vs HeartDisease**
-![alternative text](images/Distribution of Oldpeak by HeartDisease.png)
+![alternative text](images/Distribution_of_Oldpeak_by_HeartDisease.png)
 - Distribusi: Sangat berbeda antar grup. Grup HeartDisease = Yes punya distribusi lebih menyebar ke kanan (nilai oldpeak lebih tinggi).
 - Rata-rata:
   - All: 0.89
@@ -253,12 +226,12 @@ Data dibagi dengan rasio 80:20, di mana 80% dari data digunakan sebagai data pel
 ### 7. Transformasi Values
 
 Dilakukan proses scaling menggunakan MinMaxScaler untuk menormalkan rentang nilai pada setiap fitur. Dengan metode ini, semua fitur diubah ke dalam skala yang seragam, biasanya antara 0 hingga 1, sehingga tidak ada fitur yang memiliki pengaruh berlebihan akibat perbedaan skala nilai. Hal ini membantu algoritma machine learning bekerja lebih efektif dan menghasilkan model yang lebih stabil.
-<img src="images/minmaxscaler.png" align="center"><br>
+![alternative text](images/minmaxscaler.png)
 
 ### 8. Menangani Data Imbalance
 
 Untuk mengatasi ketidakseimbangan kelas pada data latih, digunakan teknik SMOTE (Synthetic Minority Over-sampling Technique) yang menambahkan data sintetis pada kelas yang jumlahnya lebih sedikit. Selain itu, pengujian juga dilakukan pada data tanpa penerapan SMOTE guna membandingkan tingkat akurasi dan menilai sejauh mana metode ini efektif dalam meningkatkan performa model.
-<img src="images/smote.png" align="center"><br>
+![alternative text](images/smote.png)
 
 ## Modeling
 ### 1. Random Forest
@@ -434,20 +407,28 @@ Untuk mengevaluasi kinerja model dalam mendeteksi risiko penyakit jantung, digun
 ### F1 Score
 
 **F1 Score** adalah metrik yang menggabungkan precision dan recall. F1-score sangat berguna ketika kita menghadapi ketidakseimbangan kelas dalam dataset. Nilai F1-score adalah rata-rata harmonis antara precision dan recall, memberikan keseimbangan antara kedua metrik tersebut. F1-score memberikan keseimbangan antara precision dan recall, yang berguna ketika keduanya sama pentingnya, dengan rumus:
-
-<img src="images/F1-Score.png" align="center"><br>
+![alternative text](images/F1-Score.png)
 
 di mana:
 - **Precision**: Precision adalah metrik yang lebih spesifik daripada akurasi untuk mengukur salah-satu label sebagai entitas terpisah. Precision mengukur: dari semua prediksi pada label tertentu (dalam hal ini label positif), berapa persen yang prediksinya benar. Atau dalam bahasa yang lebih teknis, precision adalah rasio antara prediksi positif yang benar (true positive) dengan total prediksi positif (baik yang benar maupun salah).  
-<img src="images/Precision.png" align="center"><br>
+![alternative text](images/Precision.png)
 - **Recall**: Recall mengukur seberapa banyak kasus positif dari semua data yang aktualnya beneran positif. Metrik ini penting ketika kita ingin meminimalkan kesalahan negatif (false negative), seperti pada deteksi penyakit di mana kita tidak ingin ada pasien yang sakit tetapi diklasifikasikan sebagai sehat. Secara teknis dalam confusion matrix, recall adalah rasio antara prediksi positif yang benar dengan total jumlah data yang sebenarnya positif.
-<br><img src="images/Recall.png" align="center"><br>
+![alternative text](images/Recall.png)
 
 **ROC (Receiver Operating Characteristic)** adalah grafik yang digunakan untuk mengevaluasi kinerja model klasifikasi biner. Grafik ini menggambarkan kemampuan model dalam membedakan antara kelas positif dan negatif pada berbagai threshold (ambang batas) probabilitas.
 
 Penggunaan metrik recall sangat penting untuk memastikan model mampu menangkap sebanyak mungkin kasus positif, sedangkan F1 Score sangat sesuai untuk menjaga keseimbangan antara False Positive dan False Negative, terutama dalam deteksi risiko penyakit jantung. Berdasarkan hasil evaluasi, model Gradient Boosting mencapai recall sebesar 0,92, F1 Score sebesar 0,92, dan ROC AUC sebesar 0,91, yang menunjukkan bahwa model ini memiliki kepekaan tinggi dalam mendeteksi kasus positif sekaligus performa klasifikasi yang kuat dibandingkan model lain.
+![alternative text](images/visualisasi_alltuning.png)
 
-<img src="images/visualisasi_alltuning.png" align="center"><br>
+**Rekomendasi Strategis:**
+
+* **Kampanye Berbasis Gender**, Fokuskan edukasi pada pria melalui media komunitas pria (olahraga, kerja, ibadah).
+* **Edukasi Nyeri Dada Tersembunyi**, Sosialisasikan bahwa gejala penyakit jantung bisa tanpa nyeri dada khas (misal: lelah, sesak napas).
+* **Pemeriksaan EKG Rutin**, Sediakan EKG murah/gratis untuk usia >45 tahun dan latih tenaga medis membaca EKG dasar.
+* **Pantau Exercise Angina**, Edukasi masyarakat soal nyeri saat olahraga dan integrasikan dalam program kebugaran rutin.
+* **Skrining Lansia**, Prioritaskan pemeriksaan jantung untuk usia >50 tahun dan beri insentif partisipasi.
+* **Monitoring Tanda Vital**, Ajak masyarakat pantau tekanan darah, detak jantung, dan oldpeak secara berkala.
+* **Kolesterol & Risiko Lain**, Tekankan kolesterol sehat penting, tapi tetap waspada jika ada faktor risiko lain meski kolesterol rendah.
 
 ## Referensi
 1. Columbia Asia. (2024). Penyakit Jantung: Ancaman Tersembunyi. Retrieved from: https://columbiaasia.co.id/artikel/kesehatan/penyakit-jantung-ancaman-tersembunyi/
