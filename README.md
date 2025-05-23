@@ -308,6 +308,7 @@ K-Nearest Neighbors adalah algoritma machine learning berbasis instance-based le
 * Kinerja menurun jika data mengandung banyak noise atau fitur yang tidak relevan.
 
 Pada project kali ini akan dilakukan percobaan terhadap beberapa algoritma machine learning yaitu:
+
 **Tabel Parameter Model**
 | Nama Model             | Kode Pemanggilan                              | Parameter yang Ditentukan |
 | ---------------------- | --------------------------------------------- | ------------------------- |
