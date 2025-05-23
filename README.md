@@ -182,9 +182,7 @@ Pengaruh: enderita penyakit jantung cenderung memiliki tekanan darah istirahat y
 Pengaruh: Secara mengejutkan, kolesterol rata-rata pada penderita penyakit jantung justru lebih rendah. Hal ini bisa disebabkan oleh berbagai faktor, seperti efek pengobatan yang menurunkan kolesterol, gaya hidup setelah diagnosis, atau distribusi data yang tidak merata. Oleh karena itu, kolesterol dalam dataset ini mungkin kurang representatif sebagai indikator tunggal untuk mendeteksi penyakit jantung.
 
 **4. MaxHR vs HeartDisease**
-<br>
-<image src='images/Distribution of MaxHR by HeartDisease.png' width= 500/>
-<br> 
+![alternative text](images/Distribution of MaxHR by HeartDisease.png)
 - Distribusi: Distribusi menunjukkan bahwa kelompok HeartDisease = No memiliki detak jantung maksimum yang lebih tinggi, sedangkan kelompok HeartDisease = Yes cenderung memiliki MaxHR yang lebih rendah.
 - Rata-rata:
   - All: 136.81
@@ -194,9 +192,7 @@ Pengaruh: Secara mengejutkan, kolesterol rata-rata pada penderita penyakit jantu
 Pengaruh: Penderita penyakit jantung cenderung tidak mampu mencapai detak jantung maksimum yang tinggi saat beraktivitas fisik, yang bisa menjadi indikasi keterbatasan fungsi jantung. MaxHR yang lebih rendah merupakan sinyal penting adanya potensi gangguan jantung, sehingga fitur ini cukup signifikan dalam membedakan antara penderita dan non-penderita.
 
 **5. Oldpeak vs HeartDisease**
-<br>
-<image src='images/Distribution of Oldpeak by HeartDisease.png' width= 500/>
-<br> 
+![alternative text](images/Distribution of Oldpeak by HeartDisease.png)
 - Distribusi: Sangat berbeda antar grup. Grup HeartDisease = Yes punya distribusi lebih menyebar ke kanan (nilai oldpeak lebih tinggi).
 - Rata-rata:
   - All: 0.89
@@ -212,16 +208,12 @@ adalah proses mengubah dan mengolah data mentah agar siap digunakan dalam tahap 
 ### 1. Menghapus Kolom yang Tidak digunakan
 
 Pertama yang akan dilakukan yaitu menghapus kolom `FastingBS` yang sudah tidak digunakan lagi untuk tahap yang lebih lanjut.
-<br>
-<image src='images/drop_colomn.png' width= 500/>
-<br> 
+![alternative text](images/drop_colomn.png)
 
 ### 2. Menangani Missing Values
 
 Pada dataset terlihat tidak terdapat missing value. 
-<br>
-<img src='images/handle_missingvalues.png' align="center"><br>
-<br> 
+![alternative text](images/handle_missingvalues.png) 
 
 ### 3. Menangani Data Duplikat
 
@@ -232,7 +224,7 @@ Pada dataset terlihat tidak terdapat data duplikat.
 ### 4. Menghapus Outlier Values
 
 Untuk menangani outlier, dilakukan penghapusan outlier pada kolom `RestingBP`, `Cholesterol`, `MaxHR` dan `Oldpeak` menggunakan metode IQR (Interquartile Range). Metode ini diterapkan untuk menghapus data yang berada di luar rentang batas bawah dan batas atas yang telah ditetapkan, sehingga menghasilkan data yang lebih rapi dan menggambarkan kondisi sebenarnya dengan lebih baik.
-<img src='images/handle_outlier.png' align="center"><br>
+![alternative text](images/handle_outlier.png)
 
 ### 5. Encoding Fitur Kategori
 
@@ -265,22 +257,7 @@ Untuk mengatasi ketidakseimbangan kelas pada data latih, digunakan teknik SMOTE 
 <img src="images/smote.png" align="center"><br>
 
 ## Modeling
-
-Pada project kali ini akan dilakukan percobaan terhadap beberapa algoritma machine learning yaitu:
-
-### 1. Logistic Regression
-Logistic Regression adalah algoritma machine learning yang digunakan untuk tugas klasifikasi, terutama klasifikasi biner. Algoritma ini memodelkan probabilitas suatu data termasuk dalam kelas tertentu dengan menggunakan fungsi logistik (sigmoid). Logistic Regression mencari garis batas keputusan (decision boundary) linier antara kelas-kelas.
-**Kelebihan:**
-* Sederhana dan cepat dalam pelatihan.
-* Mudah diinterpretasikan melalui koefisien fitur.
-* Efektif untuk data yang memiliki hubungan linier.
-
-**Kekurangan:**
-* Kurang cocok untuk data dengan hubungan non-linier yang kompleks.
-* Sensitif terhadap multikolinearitas antar fitur.
-* Kinerjanya menurun jika terdapat banyak outlier.
-
-### 2. Random Forest
+### 1. Random Forest
 Random Forest adalah algoritma ensemble learning yang membentuk banyak pohon keputusan (decision tree) dan menggabungkan hasilnya untuk meningkatkan akurasi dan mengurangi overfitting. Setiap pohon dilatih pada subset acak dari data dan fitur, sehingga menciptakan model yang lebih stabil dan tahan terhadap noise.
 
 **Kelebihan:**
@@ -293,7 +270,7 @@ Random Forest adalah algoritma ensemble learning yang membentuk banyak pohon kep
 * Membutuhkan lebih banyak waktu dan sumber daya dibanding algoritma dasar.
 * Tidak secepat model linear pada dataset besar.
 
-### 3. Gradient Boosting
+### 2. Gradient Boosting
 Gradient Boosting adalah algoritma ensemble yang membangun model secara bertahap, di mana setiap model baru mencoba memperbaiki kesalahan dari model sebelumnya. Model ini sangat kuat karena mampu menangani data kompleks dan non-linier, serta memiliki performa tinggi pada banyak tugas klasifikasi.
 
 **Kelebihan:**
@@ -306,9 +283,31 @@ Gradient Boosting adalah algoritma ensemble yang membangun model secara bertahap
 * Memerlukan tuning hyperparameter yang cermat untuk hasil optimal.
 * Lebih kompleks dan sulit untuk diinterpretasikan dibanding model sederhana.
 
-## Evaluation
+### 3. K-Nearest Neighbors (KNN)
+K-Nearest Neighbors adalah algoritma machine learning berbasis instance-based learning yang digunakan untuk tugas klasifikasi maupun regresi. Dalam klasifikasi, KNN menentukan kelas suatu data baru berdasarkan mayoritas kelas dari k tetangga terdekatnya dalam ruang fitur. Jarak umum yang digunakan untuk menentukan kedekatan adalah Euclidean distance.
+**Kelebihan:**
+* Sederhana dan mudah dipahami.
+* Tidak memerlukan proses pelatihan (lazy learning).
+* Dapat bekerja baik untuk data dengan distribusi non-linier.
 
-Untuk mengevaluasi kinerja model dalam mendeteksi risiko penyakit jantung, digunakan beberapa metrik evaluasi, yaitu recall, F1-score, dan ROC (Receiver Operating Characteristic). Penggunaan metrik ini didasarkan pada karakteristik masalah yang memiliki distribusi kelas tidak seimbang serta potensi dampak serius jika terjadi kesalahan klasifikasi. Recall digunakan untuk menilai kemampuan model dalam mengidentifikasi seluruh kasus positif (individu yang berisiko penyakit jantung), F1-score memberikan keseimbangan antara presisi dan recall, sementara ROC membantu mengevaluasi performa model pada berbagai ambang batas klasifikasi.
+**Kekurangan:**
+* Waktu prediksi bisa lambat jika data besar (karena menghitung jarak ke semua titik).
+* Sensitif terhadap fitur yang memiliki skala berbeda.
+* Kinerja menurun jika data mengandung banyak noise atau fitur yang tidak relevan.
+
+Pada project kali ini akan dilakukan percobaan terhadap beberapa algoritma machine learning yaitu:
+**Tabel Parameter Model**
+| Nama Model             | Kode Pemanggilan                              | Parameter yang Ditentukan |
+| ---------------------- | --------------------------------------------- | ------------------------- |
+| Logistic Regression    | `LogisticRegression(random_state=42)`         | hanya `random_state`      |
+| Decision Tree          | `DecisionTreeClassifier(random_state=42)`     | hanya `random_state`      |
+| Random Forest          | `RandomForestClassifier(random_state=42)`     | hanya `random_state`      |
+| AdaBoost               | `AdaBoostClassifier(random_state=42)`         | hanya `random_state`      |
+| Gradient Boosting      | `GradientBoostingClassifier(random_state=42)` | hanya `random_state`      |
+| Support Vector Machine | `SVC(random_state=42)`                        | hanya `random_state`      |
+| Naive Bayes            | `GaussianNB()`                                | semua parameter default   |
+| K-Nearest Neighbors    | `KNeighborsClassifier()`                      | semua parameter default   |
+| XGBoost                | `XGBClassifier(random_state=42)`              | hanya `random_state`      |
 
 ### Performa model sebelum menggunakan SMOTE (Synthetic Minority Oversampling Technique)
 | Model                  | Acc Train | Acc Test | Prec Train | Prec Test | Rec Train | Rec Test | F1 Train | F1 Test | ROC Train | ROC Test |
@@ -336,8 +335,90 @@ Untuk mengevaluasi kinerja model dalam mendeteksi risiko penyakit jantung, digun
 | K-Nearest Neighbors    | 0.889     | 0.901    | 0.869      | 0.866     | 0.916     | 0.959    | 0.892    | 0.910   | 0.889     | 0.898    |
 | XGBoost                | 1.000     | 0.872    | 1.000      | 0.878     | 1.000     | 0.878    | 1.000    | 0.878   | 1.000     | 0.872    |
 
+Setelah di telusuri bahwa algoritma yang dipilh untuk melakukan tahap hyperparameter tuning yaitu `Random Forest`, `Gradient Boosting`, dan `K-Nearest Neighbors` maka dari itu berikut adalah parameter yang saya gunakan pada setiap algoritma untuk hyperparameter tuning:
+
+### 1. Random Forest
+Berikut adalah tabel penjelasan parameter yang digunakan dalam hyperparameter tuning `RandomForestClassifier` menggunakan `RandomizedSearchCV`:
+
+| **Parameter**       | **Tipe**            | **Deskripsi**                                                                   |
+| ------------------- | ------------------- | ------------------------------------------------------------------------------- |
+| `n_estimators`      | `randint(100, 500)` | Jumlah pohon dalam hutan (semakin banyak, semakin akurat tetapi lebih lambat).  |
+| `max_depth`         | `randint(3, 30)`    | Kedalaman maksimum setiap pohon. Mengontrol kompleksitas model.                 |
+| `min_samples_split` | `randint(2, 20)`    | Minimum jumlah sampel yang dibutuhkan untuk membagi node.                       |
+| `min_samples_leaf`  | `randint(1, 20)`    | Minimum jumlah sampel yang diperlukan untuk berada di daun (leaf).              |
+| `max_features`      | `['sqrt', 'log2']`  | Jumlah fitur yang dipertimbangkan untuk setiap split (√jumlah fitur atau log₂). |
+| `bootstrap`         | `[True, False]`     | Jika `True`, gunakan sampling bootstrap saat membuat pohon.                     |
+
+### Penjelasan tambahan:
+
+* `RandomizedSearchCV` mencoba kombinasi acak dari parameter-parameter di atas sebanyak `n_iter=50`.
+* `scoring='roc_auc'`: Model dipilih berdasarkan skor AUC pada cross-validation.
+* `cv=5`: Menggunakan 5-fold cross-validation untuk validasi.
+* `n_jobs=-1`: Gunakan seluruh core CPU untuk mempercepat proses.
+* `verbose=1`: Menampilkan progress selama tuning.
+
+Berikut adalah tabel hasil evaluasi model **Random Forest (Tuned)**:
+
+| model                 | acc_train | acc_test | prec_train | prec_test | rec_train | rec_test | f1_train |  f1_test | roc_train | roc_test |
+| --------------------- | --------- | -------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- | -------- |
+| Random Forest (Tuned) | 0.901786  | 0.907801 | 0.888446   | 0.876543  | 0.892     | 0.959459 | 0.890220 | 0.916129 | 0.900839  | 0.905103 |
+
+### 2. Gradient Boosting
+Berikut adalah penjelasan parameter hyperparameter tuning yang digunakan pada algoritma **Gradient Boosting** menggunakan `RandomizedSearchCV`:
+
+| Parameter           | Deskripsi                                                                | Tipe Distribusi | Rentang/Pilihan               |
+| ------------------- | ------------------------------------------------------------------------ | --------------- | ----------------------------- |
+| `n_estimators`      | Jumlah pohon keputusan (trees) yang dibangun                             | `randint`       | 100 sampai 500                |
+| `learning_rate`     | Kecepatan pembelajaran, bobot pengurangan kontribusi setiap pohon        | `uniform`       | 0.01 sampai 0.31 (0.01 + 0.3) |
+| `max_depth`         | Kedalaman maksimal tiap pohon keputusan                                  | `randint`       | 3 sampai 15                   |
+| `min_samples_split` | Jumlah minimal sampel yang dibutuhkan untuk membagi node                 | `randint`       | 2 sampai 20                   |
+| `min_samples_leaf`  | Jumlah minimal sampel pada daun pohon                                    | `randint`       | 1 sampai 20                   |
+| `subsample`         | Proporsi sampel acak yang digunakan untuk membangun tiap pohon (bagging) | `uniform`       | 0.6 sampai 1.0 (0.6 + 0.4)    |
+
+### Penjelasan tambahan:
+
+* `RandomizedSearchCV` mencoba kombinasi acak dari parameter-parameter di atas sebanyak `n_iter=50`.
+* `scoring='roc_auc'`: Model dipilih berdasarkan skor AUC pada cross-validation.
+* `cv=5`: Menggunakan 5-fold cross-validation untuk validasi.
+* `n_jobs=-1`: Gunakan seluruh core CPU untuk mempercepat proses.
+* `verbose=1`: Menampilkan progress selama tuning.
+
+Berikut adalah tabel hasil evaluasi model **Gradient Boosting (Tuned)**:
+
+| model                     |  acc_train |  acc_test | prec_train  |  prec_test |  rec_train |  rec_test |  f1_train |  f1_test |  roc_train |  roc_test |
+| ------------------------- | ---------- | --------- | ----------- | ---------- | ---------- | --------- | --------- | -------- | ---------- | --------- |
+| Gradient Boosting (Tuned) | 0.941071   | 0.914894  | 0.92549     | 0.918919   | 0.944      | 0.918919  | 0.934653  | 0.918919 | 0.941355   | 0.914683  |
+
+### 3. K-Nearest Neighbors
+Berikut adalah penjelasan parameter hyperparameter tuning untuk algoritma **K-Nearest Neighbors (KNN)** menggunakan `RandomizedSearchCV`:
+
+| Parameter     | Deskripsi                                                                            | Nilai / Rentang yang Dicari                                          |
+| ------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| `n_neighbors` | Jumlah tetangga terdekat yang digunakan untuk menentukan kelas data baru             | Integer antara 3 sampai 30                                           |
+| `weights`     | Bobot yang diberikan pada tetangga saat voting:                                      | `'uniform'` (bobot sama) atau `'distance'` (bobot berdasarkan jarak) |
+| `p`           | Parameter untuk menentukan jenis jarak yang digunakan:                               | `1` untuk Manhattan distance, `2` untuk Euclidean distance           |
+| `leaf_size`   | Ukuran daun pada pohon pencarian yang digunakan untuk mempercepat pencarian tetangga | Integer antara 10 sampai 50                                          |
+
+### Penjelasan tambahan:
+
+* `RandomizedSearchCV` mencoba kombinasi acak dari parameter-parameter di atas sebanyak `n_iter=50`.
+* `scoring='roc_auc'`: Model dipilih berdasarkan skor AUC pada cross-validation.
+* `cv=5`: Menggunakan 5-fold cross-validation untuk validasi.
+* `n_jobs=-1`: Gunakan seluruh core CPU untuk mempercepat proses.
+* `verbose=1`: Menampilkan progress selama tuning.
+
+Berikut adalah tabel hasil evaluasi model **K-Nearest Neighbors (Tuned)**:
+
+| model                       |  acc_train | acc_test  |  prec_train |  prec_test |  rec_train |  rec_test |  f1_train |  f1_test |  roc_train |  roc_test |
+| --------------------------- | ---------- | --------- | ----------- | ---------- | ---------- | --------- | --------- | -------- | ---------- | --------- |
+| K-Nearest Neighbors (Tuned) | 1.000      | 0.9078    | 1.000       | 0.8861     | 1.000      | 0.9459    | 1.000     | 0.9150   | 1.000      | 0.9058    |
+
+## Evaluation
+
+Untuk mengevaluasi kinerja model dalam mendeteksi risiko penyakit jantung, digunakan beberapa metrik evaluasi, yaitu recall, F1-score, dan ROC (Receiver Operating Characteristic). Penggunaan metrik ini didasarkan pada karakteristik masalah yang memiliki distribusi kelas tidak seimbang serta potensi dampak serius jika terjadi kesalahan klasifikasi. Recall digunakan untuk menilai kemampuan model dalam mengidentifikasi seluruh kasus positif (individu yang berisiko penyakit jantung), F1-score memberikan keseimbangan antara presisi dan recall, sementara ROC membantu mengevaluasi performa model pada berbagai ambang batas klasifikasi.
+
 ### Hasil perbandingan model sebelum dan sesudah dilakukan hyperparameter tuning
-| Model                               | Acc Train | Acc Test | Prec Train | Prec Test | Rec Train | Rec Test | F1 Train | F1 Test | ROC Train | ROC Test |
+| model                               | acc_train | acc_test | prec_train | prec_test | rec_train | rec_test | f1_train | f1_test | roc_train | roc_test |
 | ----------------------------------- | --------- | -------- | ---------- | --------- | --------- | -------- | -------- | ------- | --------- | -------- |
 | Random Forest (Before Tuning)       | 1.000     | 0.929    | 1.000      | 0.910     | 1.000     | 0.959    | 1.000    | 0.934   | 1.000     | 0.927    |
 | Random Forest (Tuned)               | 0.902     | 0.908    | 0.888      | 0.877     | 0.892     | 0.959    | 0.890    | 0.916   | 0.901     | 0.905    |
