@@ -66,57 +66,76 @@ Dari hasil analisis awal deskripsi data, terlihat bahwa data siap untuk tahap se
 #### Analisis Univariat
 
 **1. Distribusi Data Target (HeartDisease)**
+
 ![alternative text](images/distribusi_datatarget.png)
+
 Distribusi data pada label `HeartDisease` adalah cukup imbalance (55.3% vs 44.7%). Hal ini harus diperhatikan saat pelatihan model, agar tidak menghasilkan prediksi yang berat sebelah. Metrik evaluasi yang tepat dan teknik penyeimbangan data seperti oversampling pada data train (saat setelah membagi data) bisa membantu mengatasi masalah ini.
 
 
 **2. Distribusi Data Kategorikal**
+
 ![alternative text](images/barchart_cat.png)
+
 Distribusi data kategorikal menunjukkan ketimpangan pada beberapa fitur, seperti `ChestPainType` dan `ST_Slope`. Ketimpangan ini dapat memengaruhi kinerja model, sehingga perlu penanganan khusus. Salah satu cara efektif adalah menggunakan **One-Hot Encoding**, yang mengubah setiap kategori menjadi kolom biner tanpa memberi makna urutan. Pendekatan ini membantu model memahami setiap kategori secara adil dan mencegah bias terhadap kategori mayoritas.
 
 **3. Distribusi Data Numerik**
+
 ![alternative text](images/Histogram_num.png)
+
 ![alternative text](images/Boxplot_num.png)
+
 Dari gambar histogram menggambarkan sebaran nilai dan frekuensi kemunculannya. Sebagian besar distribusi menunjukkan bentuk mendekati normal (seperti `Age` dan `MaxHR`), namun beberapa memiliki sebaran yang condong atau outlier ekstrem, seperti `Cholesterol` dan `Oldpeak`
 
 Boxplot menunjukkan bahwa sebagian besar fitur memiliki outlier, terutama pada RestingBP, Cholesterol, dan Oldpeak, sedangkan Age dan MaxHR memiliki sebaran yang relatif normal. Fitur FastingBS didominasi oleh nilai 0 dan minim variasi, sehingga dianggap tidak informatif dan akhirnya dihapus karena berpotensi tidak berkontribusi signifikan terhadap performa model.
 
 **4. Matriks korelasi kolom numerik**
+
 ![alternative text](images/Correlation_matrix.png)
+
 Berdasarkan korelasi antar fitur numerik, tidak ditemukan fitur yang redundant dalam dataset ini. Nilai korelasi antar fitur mayoritas rendah, di bawah 0.3, sehingga setiap fitur memberikan informasi yang unik dan layak dipertahankan untuk analisis atau pemodelan.
 
 #### Analisis Multivariat
 ## Kategorikal
 **1. Sex vs HeartDisease**
+
 ![alternative text](images/Sex.png)
+
 - Pria (M) cenderung memiliki jumlah kasus penyakit jantung (HeartDisease = Yes) sebesar 90.2% yang jauh lebih banyak dibandingkan wanita (F) yang sebesar 9.8%.
 - Wanita memiliki jumlah kasus negatif sebesar 34.9% (tidak ada penyakit jantung) yang lebih tinggi dibandingkan kasus positif yang sebesar 9.8%.
 
 Indikasi: Jenis kelamin pria memiliki risiko lebih tinggi terkena penyakit jantung.
 
 **2. ChestPainType vs HeartDisease**
+
 ![alternative text](images/ChestPainType.png)
+
 - Tipe nyeri dada ASY (Asymptomatic) memiliki jumlah kasus penyakit jantung yang sangat tinggi dibandingkan tipe lainnya.
 - Tipe ATA (Atypical angina), NAP (Non-anginal pain), dan TA (Typical angina) cenderung lebih banyak ditemukan pada pasien tanpa penyakit jantung.
 
 Indikasi: Nyeri dada tipe Asymptomatic berpotensi menjadi indikator kuat penyakit jantung.
 
 **3. RestingECG vs HeartDisease**
+
 ![alternative text](images/RestingECG.png)
+
 - Pada kategori Normal, distribusi pasien dengan dan tanpa penyakit jantung tampak seimbang.
 - Kategori ST dan LVH lebih banyak ditemukan pada pasien dengan penyakit jantung.
 
 Indikasi: Abnormalitas pada Resting ECG (ST, LVH) bisa mengindikasikan adanya penyakit jantung.
 
 **4. ExerciseAngina vs HeartDisease**
+
 ![alternative text](images/ExerciseAngina.png)
+
 - Pasien dengan ExerciseAngina = Y (ya) cenderung lebih banyak yang positif penyakit jantung.
 - Sebaliknya, pasien tanpa exercise angina (N) mayoritas tidak memiliki penyakit jantung.
 
 Indikasi: Exercise angina mungkin menjadi tanda yang cukup kuat adanya penyakit jantung.
 
 **5. ST_Slope vs HeartDisease**
+
 ![alternative text](images/ST_Slope.png)
+
 - Kategori Flat pada ST slope tampak terkait dengan jumlah kasus penyakit jantung yang tinggi.
 - Kategori Up lebih sering ditemukan pada pasien tanpa penyakit jantung.
 - Kategori Down juga lebih banyak pada pasien dengan penyakit jantung, meskipun jumlahnya lebih kecil dari Flat.
@@ -125,7 +144,9 @@ Indikasi: ST slope Flat dan Down bisa menjadi indikator risiko penyakit jantung 
 
 ## Numerikal
 **1. Age vs HeartDisease**
+
 ![alternative text](images/Distribution_of_Age_by_HeartDisease)
+
 - Distribusi: Terlihat pergeseran ke kanan pada grup penderita HeartDisease = Yes, artinya penderita cenderung lebih tua dibandingkan yang tidak.
 - Rata-rata:
   - All: 53.51
@@ -135,7 +156,9 @@ Indikasi: ST slope Flat dan Down bisa menjadi indikator risiko penyakit jantung 
 Pengaruh: Umur yang lebih tua meningkatkan kemungkinan terkena penyakit jantung, karena risiko penyakit jantung memang meningkat seiring bertambahnya usia.
 
 **2. RestingBP vs HeartDisease**
+
 ![alternative text](images/Distribution_of_RestingBP_by_HeartDisease.png)
+
 - Distribusi: Kedua kelompok (HeartDisease = No dan Yes) memiliki distribusi yang mirip, namun terdapat sedikit pergeseran ke kanan pada kelompok HeartDisease = Yes, yang menunjukkan tekanan darah lebih tinggi.
 - Rata-rata:
   - All: 132.40
@@ -145,7 +168,9 @@ Pengaruh: Umur yang lebih tua meningkatkan kemungkinan terkena penyakit jantung,
 Pengaruh: enderita penyakit jantung cenderung memiliki tekanan darah istirahat yang sedikit lebih tinggi. Meskipun perbedaannya tidak terlalu besar, tekanan darah yang meningkat dapat menjadi faktor risiko tambahan terhadap penyakit jantung, terutama jika dikombinasikan dengan faktor risiko lainnya.
 
 **3. Cholesterol vs HeartDisease**
+
 ![alternative text](images/Distribution_of_Cholesterol_by_HeartDisease.png)
+
 - Distribusi: Terlihat bahwa kelompok HeartDisease = No memiliki distribusi kolesterol yang lebih tinggi dibandingkan dengan kelompok HeartDisease = Yes, yang cukup mengejutkan karena bertentangan dengan asumsi umum.
 - Rata-rata:
   - All: 198.80
@@ -155,7 +180,9 @@ Pengaruh: enderita penyakit jantung cenderung memiliki tekanan darah istirahat y
 Pengaruh: Secara mengejutkan, kolesterol rata-rata pada penderita penyakit jantung justru lebih rendah. Hal ini bisa disebabkan oleh berbagai faktor, seperti efek pengobatan yang menurunkan kolesterol, gaya hidup setelah diagnosis, atau distribusi data yang tidak merata. Oleh karena itu, kolesterol dalam dataset ini mungkin kurang representatif sebagai indikator tunggal untuk mendeteksi penyakit jantung.
 
 **4. MaxHR vs HeartDisease**
+
 ![alternative text](images/Distribution_of_MaxHR_by_HeartDisease.png)
+
 - Distribusi: Distribusi menunjukkan bahwa kelompok HeartDisease = No memiliki detak jantung maksimum yang lebih tinggi, sedangkan kelompok HeartDisease = Yes cenderung memiliki MaxHR yang lebih rendah.
 - Rata-rata:
   - All: 136.81
@@ -165,7 +192,9 @@ Pengaruh: Secara mengejutkan, kolesterol rata-rata pada penderita penyakit jantu
 Pengaruh: Penderita penyakit jantung cenderung tidak mampu mencapai detak jantung maksimum yang tinggi saat beraktivitas fisik, yang bisa menjadi indikasi keterbatasan fungsi jantung. MaxHR yang lebih rendah merupakan sinyal penting adanya potensi gangguan jantung, sehingga fitur ini cukup signifikan dalam membedakan antara penderita dan non-penderita.
 
 **5. Oldpeak vs HeartDisease**
+
 ![alternative text](images/Distribution_of_Oldpeak_by_HeartDisease.png)
+
 - Distribusi: Sangat berbeda antar grup. Grup HeartDisease = Yes punya distribusi lebih menyebar ke kanan (nilai oldpeak lebih tinggi).
 - Rata-rata:
   - All: 0.89
