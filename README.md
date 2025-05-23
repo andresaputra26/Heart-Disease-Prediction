@@ -310,6 +310,32 @@ Gradient Boosting adalah algoritma ensemble yang membangun model secara bertahap
 
 Untuk mengevaluasi kinerja model dalam mendeteksi risiko penyakit jantung, digunakan beberapa metrik evaluasi, yaitu recall, F1-score, dan ROC (Receiver Operating Characteristic). Penggunaan metrik ini didasarkan pada karakteristik masalah yang memiliki distribusi kelas tidak seimbang serta potensi dampak serius jika terjadi kesalahan klasifikasi. Recall digunakan untuk menilai kemampuan model dalam mengidentifikasi seluruh kasus positif (individu yang berisiko penyakit jantung), F1-score memberikan keseimbangan antara presisi dan recall, sementara ROC membantu mengevaluasi performa model pada berbagai ambang batas klasifikasi.
 
+### Performa model sebelum menggunakan SMOTE (Synthetic Minority Oversampling Technique)
+| Model                  | Acc Train | Acc Test | Prec Train | Prec Test | Rec Train | Rec Test | F1 Train | F1 Test | ROC Train | ROC Test |
+| ---------------------- | --------- | -------- | ---------- | --------- | --------- | -------- | -------- | ------- | --------- | -------- |
+| Logistic Regression    | 0.859     | 0.887    | 0.835      | 0.892     | 0.852     | 0.892    | 0.844    | 0.892   | 0.858     | 0.886    |
+| Decision Tree          | 1.000     | 0.809    | 1.000      | 0.841     | 1.000     | 0.784    | 1.000    | 0.811   | 1.000     | 0.810    |
+| Random Forest          | 1.000     | 0.929    | 1.000      | 0.910     | 1.000     | 0.959    | 1.000    | 0.934   | 1.000     | 0.927    |
+| AdaBoost               | 0.868     | 0.858    | 0.861      | 0.886     | 0.840     | 0.838    | 0.850    | 0.861   | 0.865     | 0.859    |
+| Gradient Boosting      | 0.964     | 0.887    | 0.953      | 0.892     | 0.968     | 0.892    | 0.960    | 0.892   | 0.965     | 0.886    |
+| Support Vector Machine | 0.879     | 0.894    | 0.845      | 0.864     | 0.892     | 0.946    | 0.868    | 0.903   | 0.880     | 0.891    |
+| Naive Bayes            | 0.850     | 0.879    | 0.829      | 0.861     | 0.836     | 0.919    | 0.833    | 0.889   | 0.849     | 0.877    |
+| K-Nearest Neighbors    | 0.875     | 0.894    | 0.844      | 0.873     | 0.884     | 0.932    | 0.863    | 0.902   | 0.876     | 0.892    |
+| XGBoost                | 1.000     | 0.865    | 1.000      | 0.867     | 1.000     | 0.878    | 1.000    | 0.872   | 1.000     | 0.865    |
+
+### Performa model setelah menggunakan SMOTE (Synthetic Minority Oversampling Technique)
+| Model                  | Acc Train | Acc Test | Prec Train | Prec Test | Rec Train | Rec Test | F1 Train | F1 Test | ROC Train | ROC Test |
+| ---------------------- | --------- | -------- | ---------- | --------- | --------- | -------- | -------- | ------- | --------- | -------- |
+| Logistic Regression    | 0.860     | 0.872    | 0.852      | 0.859     | 0.871     | 0.905    | 0.861    | 0.882   | 0.860     | 0.871    |
+| Decision Tree          | 1.000     | 0.823    | 1.000      | 0.845     | 1.000     | 0.811    | 1.000    | 0.828   | 1.000     | 0.823    |
+| Random Forest          | 1.000     | 0.922    | 1.000      | 0.909     | 1.000     | 0.946    | 1.000    | 0.927   | 1.000     | 0.921    |
+| AdaBoost               | 0.874     | 0.851    | 0.872      | 0.853     | 0.877     | 0.865    | 0.875    | 0.859   | 0.874     | 0.850    |
+| Gradient Boosting      | 0.966     | 0.915    | 0.956      | 0.908     | 0.977     | 0.932    | 0.967    | 0.920   | 0.966     | 0.914    |
+| Support Vector Machine | 0.874     | 0.887    | 0.856      | 0.854     | 0.900     | 0.946    | 0.877    | 0.897   | 0.874     | 0.883    |
+| Naive Bayes            | 0.852     | 0.872    | 0.861      | 0.850     | 0.839     | 0.919    | 0.850    | 0.883   | 0.852     | 0.870    |
+| K-Nearest Neighbors    | 0.889     | 0.901    | 0.869      | 0.866     | 0.916     | 0.959    | 0.892    | 0.910   | 0.889     | 0.898    |
+| XGBoost                | 1.000     | 0.872    | 1.000      | 0.878     | 1.000     | 0.878    | 1.000    | 0.878   | 1.000     | 0.872    |
+
 ### Hasil perbandingan model sebelum dan sesudah dilakukan hyperparameter tuning
 | Model                               | Acc Train | Acc Test | Prec Train | Prec Test | Rec Train | Rec Test | F1 Train | F1 Test | ROC Train | ROC Test |
 | ----------------------------------- | --------- | -------- | ---------- | --------- | --------- | -------- | -------- | ------- | --------- | -------- |
