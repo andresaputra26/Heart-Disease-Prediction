@@ -417,7 +417,12 @@ di mana:
 | K-Nearest Neighbors (Before Tuning) | 0.875     | 0.894    | 0.844      | 0.873     | 0.884     | 0.932    | 0.863    | 0.902   | 0.876     | 0.892    |
 | K-Nearest Neighbors (Tuned)         | 1.000     | 0.908    | 1.000      | 0.886     | 1.000     | 0.946    | 1.000    | 0.915   | 1.000     | 0.906    |
 
-Penggunaan metrik recall sangat penting untuk memastikan model mampu menangkap sebanyak mungkin kasus positif, sedangkan F1 Score sangat sesuai untuk menjaga keseimbangan antara False Positive dan False Negative, terutama dalam deteksi risiko penyakit jantung. Berdasarkan hasil evaluasi, model Gradient Boosting mencapai recall sebesar 0,92, F1 Score sebesar 0,92, dan ROC AUC sebesar 0,91, yang menunjukkan bahwa model ini memiliki kepekaan tinggi dalam mendeteksi kasus positif sekaligus performa klasifikasi yang kuat dibandingkan model lain.
+Setelah dilakukan tuning, model **Random Forest** dan **Gradient Boosting** menunjukkan penurunan performa pada data training yang menandakan berkurangnya overfitting, sekaligus mengalami peningkatan atau stabilitas performa pada data testing sehingga model menjadi lebih general dan handal di data nyata. Sebaliknya, model **K-Nearest Neighbors (KNN)** setelah tuning justru mengalami peningkatan akurasi training sampai 100%, yang mengindikasikan overfitting, namun performa testing-nya juga meningkat sedikit.
+
+Secara keseluruhan, tuning membantu meningkatkan keseimbangan antara performa training dan testing pada Random Forest dan Gradient Boosting, sedangkan pada KNN tuning memperkuat model di training sekaligus sedikit memperbaiki hasil testing.
+
+Penggunaan metrik **recall** sangat penting untuk memastikan model mampu menangkap sebanyak mungkin kasus positif, sementara **F1 Score** sangat sesuai untuk menjaga keseimbangan antara False Positive dan False Negative, terutama dalam konteks deteksi risiko penyakit jantung. Berdasarkan hasil evaluasi, model **Gradient Boosting** mencapai **recall sebesar 0,92**, **F1 Score sebesar 0,92**, dan **ROC AUC sebesar 0,91**, yang menunjukkan bahwa model ini memiliki kepekaan tinggi dalam mendeteksi kasus positif sekaligus performa klasifikasi yang kuat dibandingkan model lain.
+
 ![alternative text](images/visualisasi_alltuning.png)
 
 **Rekomendasi Strategis:**
